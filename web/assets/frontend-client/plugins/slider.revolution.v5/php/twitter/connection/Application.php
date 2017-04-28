@@ -24,7 +24,7 @@ class Application extends Base
      * @param string $consumerKey
      * @param string $consumerSecret
      */
-    public function __construct($consumerKey,$consumerSecret)
+    public function __construct($consumerKey, $consumerSecret)
     {
         $this->_consumerKey = $consumerKey;
         $this->_consumerSecret = $consumerSecret;
@@ -34,12 +34,12 @@ class Application extends Base
      * @param string $url
      * @param array $parameters
      * @param $method
-     * @return array
+     * @return string[]
      */
-    protected function _buildHeaders($url,array $parameters = null,$method)
+    protected function _buildHeaders($url, array $parameters = null, $method)
     {
         return $headers = array(
-                    "Authorization: Bearer " . $this->_getBearerToken()
+                    "Authorization: Bearer ".$this->_getBearerToken()
                 );
     }
 
@@ -53,14 +53,14 @@ class Application extends Base
      */
     private function _getBearerToken() {
         if (!$this->_bearersToken) {
-            $token = urlencode($this->_consumerKey) . ':' . urlencode($this->_consumerSecret);
+            $token = urlencode($this->_consumerKey).':'.urlencode($this->_consumerSecret);
             $token = base64_encode($token);
 
             $headers = array(
-                "Authorization: Basic " . $token
+                "Authorization: Basic ".$token
             );
 
-            $options = array (
+            $options = array(
                 CURLOPT_URL => self::TWITTER_API_AUTH_URL,
                 CURLOPT_HTTPHEADER => $headers,
                 CURLOPT_POST => 1,

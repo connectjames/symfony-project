@@ -28,7 +28,7 @@ class RedirectController extends Controller
         /**
          * @var $paginator \Knp\Component\Pager\Paginator
          */
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
 
         $redirect = $paginator->paginate(
             $query,

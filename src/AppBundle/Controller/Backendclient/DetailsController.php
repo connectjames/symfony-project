@@ -143,7 +143,7 @@ class DetailsController extends Controller
             200,
             array(
                 'Content-Type'          => 'application/pdf',
-                'Content-Disposition'   => 'inline; filename="'. $id . '-something-invoices.pdf"'
+                'Content-Disposition'   => 'inline; filename="'.$id.'-something-invoices.pdf"'
             )
         );
     }

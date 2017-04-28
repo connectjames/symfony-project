@@ -60,10 +60,10 @@ class TP_flickr {
 	 * @since    1.0.0
 	 * @param    array    $params 	Parameter build for API request
 	 */
-	private function call_flickr_api($params){
+	private function call_flickr_api($params) {
 		//build url
 		$encoded_params = array();
-		foreach ($params as $k => $v){
+		foreach ($params as $k => $v) {
 		  $encoded_params[] = urlencode($k).'='.urlencode($v);
 		}
 
@@ -79,7 +79,7 @@ class TP_flickr {
 	 * @since    1.0.0
 	 * @param    string    $user_url URL of the Gallery
 	 */
-	public function get_user_from_url($user_url){
+	public function get_user_from_url($user_url) {
 		//gallery params
 		$user_params = $this->api_param_defaults + array(
 			'method'  => 'flickr.urls.lookupUser',
@@ -100,7 +100,7 @@ class TP_flickr {
 	 * @since    1.0.0
 	 * @param    string    $group_url URL of the Gallery
 	 */
-	public function get_group_from_url($group_url){
+	public function get_group_from_url($group_url) {
 		//gallery params
 		$group_params = $this->api_param_defaults + array(
 			'method'  => 'flickr.urls.lookupGroup',
@@ -122,7 +122,7 @@ class TP_flickr {
 	 * @param    string    $user_id 	flicker User id (not name)
 	 * @param    int       $item_count 	number of photos to pull
 	 */
-	public function get_public_photos($user_id,$item_count=10){
+	public function get_public_photos($user_id, $item_count = 10) {
 		//public photos params
 		$public_photo_params = $this->api_param_defaults + array(
 			'method'  => 'flickr.people.getPublicPhotos',
@@ -144,7 +144,7 @@ class TP_flickr {
 	 * @param    string    $user_id 	flicker User id (not name)
 	 * @param    int       $item_count 	number of photos to pull
 	 */
-	public function get_photo_sets($user_id,$item_count=10){
+	public function get_photo_sets($user_id, $item_count = 10) {
 		//photoset params
 		$photo_set_params = $this->api_param_defaults + array(
 			'method'  => 'flickr.photosets.getList',
@@ -165,7 +165,7 @@ class TP_flickr {
 	 * @param    string    $photo_set_id 	Photoset ID
 	 * @param    int       $item_count 	number of photos to pull
 	 */
-	public function get_photo_set_photos($photo_set_id,$item_count=10){
+	public function get_photo_set_photos($photo_set_id, $item_count = 10) {
 		//photoset photos params
 		$photo_set_params = $this->api_param_defaults + array(
 			'method'  		=> 'flickr.photosets.getPhotos',
@@ -187,7 +187,7 @@ class TP_flickr {
 	 * @param    string    $group_id 	Photoset ID
 	 * @param    int       $item_count 	number of photos to pull
 	 */
-	public function get_group_photos($group_id,$item_count=10){
+	public function get_group_photos($group_id, $item_count = 10) {
 		//photoset photos params
 		$group_pool_params = $this->api_param_defaults + array(
 			'method'  		=> 'flickr.groups.pools.getPhotos',
@@ -207,9 +207,8 @@ class TP_flickr {
 	 *
 	 * @since    1.0.0
 	 * @param    string    $gallery_url URL of the Gallery
-	 * @param    int       $item_count 	number of photos to pull
 	 */
-	public function get_gallery_from_url($gallery_url){
+	public function get_gallery_from_url($gallery_url) {
 		//gallery params
 		$gallery_params = $this->api_param_defaults + array(
 			'method'  => 'flickr.urls.lookupGallery',
@@ -228,7 +227,7 @@ class TP_flickr {
 	 * @param    string    $gallery_id 	flicker Gallery id (not name)
 	 * @param    int       $item_count 	number of photos to pull
 	 */
-	public function get_gallery_photos($gallery_id,$item_count=10){
+	public function get_gallery_photos($gallery_id, $item_count = 10) {
 		//gallery photos params
 		$gallery_photo_params = $this->api_param_defaults + array(
 			'method'  => 'flickr.galleries.getPhotos',
@@ -249,16 +248,16 @@ class TP_flickr {
 	 * @since    1.0.0
 	 * @param    string    $num 	flickr photo id
 	 */
-	public static function base_encode($num, $alphabet='123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ') {
+	public static function base_encode($num, $alphabet = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ') {
 		$base_count = strlen($alphabet);
 		$encoded = '';
 		while ($num >= $base_count) {
-			$div = $num/$base_count;
-			$mod = ($num-($base_count*intval($div)));
-			$encoded = $alphabet[$mod] . $encoded;
+			$div = $num / $base_count;
+			$mod = ($num - ($base_count * intval($div)));
+			$encoded = $alphabet[$mod].$encoded;
 			$num = intval($div);
 		}
-		if ($num) $encoded = $alphabet[$num] . $encoded;
+		if ($num) $encoded = $alphabet[$num].$encoded;
 		return $encoded;
 	}
 }

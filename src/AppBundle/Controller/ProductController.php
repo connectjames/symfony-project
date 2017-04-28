@@ -7,7 +7,6 @@ use AppBundle\Entity\Category;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class ProductController extends Controller
 {
@@ -58,7 +57,7 @@ class ProductController extends Controller
                                 /**
                                  * @var $paginator \Knp\Component\Pager\Paginator
                                  */
-                                $paginator  = $this->get('knp_paginator');
+                                $paginator = $this->get('knp_paginator');
                                 $categoryProducts = $paginator->paginate(
                                     $categories,
                                     $request->query->getInt('page', 1),
@@ -145,7 +144,7 @@ class ProductController extends Controller
                         /**
                          * @var $paginator \Knp\Component\Pager\Paginator
                          */
-                        $paginator  = $this->get('knp_paginator');
+                        $paginator = $this->get('knp_paginator');
                         $categoryProducts = $paginator->paginate(
                             $categories,
                             $request->query->getInt('page', 1),
@@ -235,7 +234,7 @@ class ProductController extends Controller
                 /**
                  * @var $paginator \Knp\Component\Pager\Paginator
                  */
-                $paginator  = $this->get('knp_paginator');
+                $paginator = $this->get('knp_paginator');
                 $categoryProducts = $paginator->paginate(
                     $categories,
                     $request->query->getInt('page', 1),

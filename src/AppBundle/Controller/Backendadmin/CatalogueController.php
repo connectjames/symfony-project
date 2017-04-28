@@ -8,11 +8,8 @@ use AppBundle\Entity\Product;
 use AppBundle\Entity\Category;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Component\Validator\Constraints\Image;
 
 /**
  * @Route("/admin")
@@ -49,7 +46,7 @@ class CatalogueController extends Controller
         /**
          * @var $paginator \Knp\Component\Pager\Paginator
          */
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
 
         $products = $paginator->paginate(
             $query,
@@ -117,7 +114,7 @@ class CatalogueController extends Controller
         /**
          * @var $paginator \Knp\Component\Pager\Paginator
          */
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
 
         // Find the ordering used for the menu
         $categoriesMenuRepository = $categoriesMenuRepository->findOneBy(
@@ -215,7 +212,7 @@ class CatalogueController extends Controller
         /**
          * @var $paginator \Knp\Component\Pager\Paginator
          */
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
 
         // Get all products with parameters to search
         $queryBuilderProd = $em->getRepository('AppBundle:Product')->createQueryBuilder('prod');
@@ -309,7 +306,7 @@ class CatalogueController extends Controller
         /**
          * @var $paginator \Knp\Component\Pager\Paginator
          */
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
 
         // Get all products with parameters to search
         $queryBuilderProd = $em->getRepository('AppBundle:Product')->createQueryBuilder('prod');
@@ -480,7 +477,7 @@ class CatalogueController extends Controller
         /**
          * @var $paginator \Knp\Component\Pager\Paginator
          */
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
 
         // Get all products with parameters to search
         $queryBuilderProd = $em->getRepository('AppBundle:Product')->createQueryBuilder('prod');
@@ -586,7 +583,7 @@ class CatalogueController extends Controller
                     'name' => 'menu'
                 ));
             $categoriesMenu = rtrim($categoryMenu->getOrdering(), ']');
-            $categoriesMenu = $categoriesMenu . ',{"url":"' . $category->getSlug() . '"}]';
+            $categoriesMenu = $categoriesMenu.',{"url":"'.$category->getSlug().'"}]';
 
             $categoryMenu->setOrdering($categoriesMenu);
             $em->persist($categoryMenu);
@@ -801,7 +798,7 @@ class CatalogueController extends Controller
                     'name' => "menu"
                 ));
 
-            $categoryMenu->setOrdering(str_replace($categoryOldUrl,$category->getSlug(),$categoryMenu->getOrdering()));
+            $categoryMenu->setOrdering(str_replace($categoryOldUrl, $category->getSlug(), $categoryMenu->getOrdering()));
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($categoryMenu);
@@ -906,7 +903,7 @@ class CatalogueController extends Controller
                 if ($categoryMenu["url"] == $category->getSlug()) {
                     $testChild = ltrim(json_encode($categoryMenu["children"]), '[');
                     $testChild = rtrim($testChild, ']');
-                    $categoriesMenuFinal = str_replace(json_encode($categoryMenu),$testChild,$categoriesMenuRep->getOrdering());
+                    $categoriesMenuFinal = str_replace(json_encode($categoryMenu), $testChild, $categoriesMenuRep->getOrdering());
                 }
 
                 // array with children level 2
@@ -915,15 +912,15 @@ class CatalogueController extends Controller
                         if ($itemInChildren["url"] == $category->getSlug()) {
                             $testChild = ltrim(json_encode($itemInChildren["children"]), '[');
                             $testChild = rtrim($testChild, ']');
-                            $test1 = ',' . json_encode($itemInChildren);
-                            $test2 = json_encode($itemInChildren) . ',';
+                            $test1 = ','.json_encode($itemInChildren);
+                            $test2 = json_encode($itemInChildren).',';
                             if (strpos($categoriesMenuRep->getOrdering(), $test1) !== false) {
-                                $categoriesMenuFinal = str_replace($test1,',' . $testChild,$categoriesMenuRep->getOrdering());
+                                $categoriesMenuFinal = str_replace($test1, ','.$testChild, $categoriesMenuRep->getOrdering());
                             } else if (strpos($categoriesMenuRep->getOrdering(), $test2) !== false) {
-                                $categoriesMenuFinal = str_replace($test2,$testChild . ',',$categoriesMenuRep->getOrdering());
+                                $categoriesMenuFinal = str_replace($test2, $testChild.',', $categoriesMenuRep->getOrdering());
                             } else {
-                                $test3 = str_replace(json_encode($itemInChildren),'',$categoriesMenuRep->getOrdering());
-                                $categoriesMenuFinal = str_replace(',"children":[]}','},' . $testChild,$test3);
+                                $test3 = str_replace(json_encode($itemInChildren), '', $categoriesMenuRep->getOrdering());
+                                $categoriesMenuFinal = str_replace(',"children":[]}', '},'.$testChild, $test3);
                             }
                         }
 
@@ -938,15 +935,15 @@ class CatalogueController extends Controller
 
                                 // array without children level 3
                                 if ($itemInChildren2["url"] == $category->getSlug()) {
-                                    $test1 = ',' . json_encode($itemInChildren2);
-                                    $test2 = json_encode($itemInChildren2) . ',';
+                                    $test1 = ','.json_encode($itemInChildren2);
+                                    $test2 = json_encode($itemInChildren2).',';
                                     if (strpos($categoriesMenuRep->getOrdering(), $test1) !== false) {
-                                        $categoriesMenuFinal = str_replace($test1,'',$categoriesMenuRep->getOrdering());
+                                        $categoriesMenuFinal = str_replace($test1, '', $categoriesMenuRep->getOrdering());
                                     } else if (strpos($categoriesMenuRep->getOrdering(), $test2) !== false) {
-                                        $categoriesMenuFinal = str_replace($test2,'',$categoriesMenuRep->getOrdering());
+                                        $categoriesMenuFinal = str_replace($test2, '', $categoriesMenuRep->getOrdering());
                                     } else {
-                                        $test3 = str_replace(json_encode($itemInChildren2),'',$categoriesMenuRep->getOrdering());
-                                        $categoriesMenuFinal = str_replace(',"children":[]}','}',$test3);
+                                        $test3 = str_replace(json_encode($itemInChildren2), '', $categoriesMenuRep->getOrdering());
+                                        $categoriesMenuFinal = str_replace(',"children":[]}', '}', $test3);
                                     }
                                 }
                             }
@@ -956,15 +953,15 @@ class CatalogueController extends Controller
 
                         // array without children level 2
                         if ($itemInChildren["url"] == $category->getSlug()) {
-                            $test1 = ',' . json_encode($itemInChildren);
-                            $test2 = json_encode($itemInChildren) . ',';
+                            $test1 = ','.json_encode($itemInChildren);
+                            $test2 = json_encode($itemInChildren).',';
                             if (strpos($categoriesMenuRep->getOrdering(), $test1) !== false) {
-                                $categoriesMenuFinal = str_replace($test1,'',$categoriesMenuRep->getOrdering());
+                                $categoriesMenuFinal = str_replace($test1, '', $categoriesMenuRep->getOrdering());
                             } else if (strpos($categoriesMenuRep->getOrdering(), $test2) !== false) {
-                                $categoriesMenuFinal = str_replace($test2,'',$categoriesMenuRep->getOrdering());
+                                $categoriesMenuFinal = str_replace($test2, '', $categoriesMenuRep->getOrdering());
                             } else {
-                                $test3 = str_replace(json_encode($itemInChildren),'',$categoriesMenuRep->getOrdering());
-                                $categoriesMenuFinal = str_replace(',"children":[]}','}',$test3);
+                                $test3 = str_replace(json_encode($itemInChildren), '', $categoriesMenuRep->getOrdering());
+                                $categoriesMenuFinal = str_replace(',"children":[]}', '}', $test3);
                             }
                         }
                     }
@@ -974,14 +971,14 @@ class CatalogueController extends Controller
 
                 // array without children level 1
                 if ($categoryMenu["url"] == $category->getSlug()) {
-                    $test1 = ',' . json_encode($categoryMenu);
-                    $test2 = json_encode($categoryMenu) . ',';
+                    $test1 = ','.json_encode($categoryMenu);
+                    $test2 = json_encode($categoryMenu).',';
                     if (strpos($categoriesMenuRep->getOrdering(), $test1) !== false) {
-                        $categoriesMenuFinal = str_replace($test1,'',$categoriesMenuRep->getOrdering());
+                        $categoriesMenuFinal = str_replace($test1, '', $categoriesMenuRep->getOrdering());
                     } else if (strpos($categoriesMenuRep->getOrdering(), $test2) !== false) {
-                        $categoriesMenuFinal = str_replace($test2,'',$categoriesMenuRep->getOrdering());
+                        $categoriesMenuFinal = str_replace($test2, '', $categoriesMenuRep->getOrdering());
                     } else {
-                        $categoriesMenuFinal = str_replace(json_encode($categoryMenu),'',$categoriesMenuRep->getOrdering());
+                        $categoriesMenuFinal = str_replace(json_encode($categoryMenu), '', $categoriesMenuRep->getOrdering());
                     }
 
                 }
@@ -992,7 +989,7 @@ class CatalogueController extends Controller
         $em->persist($categoriesMenuRep);
         $em->flush();
 
-        $this->addFlash('success', 'Category ' . $category->getName() . ' has been successfully deleted, if the category deleted had sub-level(s) they are now available at a lower level. Please check below.');
+        $this->addFlash('success', 'Category '.$category->getName().' has been successfully deleted, if the category deleted had sub-level(s) they are now available at a lower level. Please check below.');
 
         $em->remove($category);
         $em->flush();
@@ -1097,7 +1094,7 @@ class CatalogueController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         // Explode the products from ids separated by comma. ie: 1,2,3,4,5 to Array
-        $ids = explode( ',', $request->query->get('productsId') );
+        $ids = explode(',', $request->query->get('productsId'));
 
         // Change each products to this new display status
         for ($x = 0; $x < count($ids); $x++) {
@@ -1154,8 +1151,8 @@ class CatalogueController extends Controller
     {
         $pathImagePreview = 0;
 
-        if($request->files->all()) {
-            if($request->files->all()['form']['image']) {
+        if ($request->files->all()) {
+            if ($request->files->all()['form']['image']) {
 
                 $uploadedFile = $request->files->all()['form']['image'];
 
@@ -1165,14 +1162,14 @@ class CatalogueController extends Controller
 
                 }
 
-                $fileName = md5(uniqid()) . '.' . $uploadedFile->guessExtension();
+                $fileName = md5(uniqid()).'.'.$uploadedFile->guessExtension();
 
                 $uploadedFile->move(
                     $this->getParameter('product_images_preview_directory'),
                     $fileName
                 );
 
-                $pathImagePreview = 'assets/images/products/tmp/' . $fileName;
+                $pathImagePreview = 'assets/images/products/tmp/'.$fileName;
             }
         }
 
@@ -1188,8 +1185,8 @@ class CatalogueController extends Controller
     {
         $pathImagePreview = 0;
 
-        if($request->files->all()) {
-            if($request->files->all()['form']['image']) {
+        if ($request->files->all()) {
+            if ($request->files->all()['form']['image']) {
 
                 $uploadedFile = $request->files->all()['form']['image'];
 
@@ -1199,14 +1196,14 @@ class CatalogueController extends Controller
 
                 }
 
-                $fileName = md5(uniqid()) . '.' . $uploadedFile->guessExtension();
+                $fileName = md5(uniqid()).'.'.$uploadedFile->guessExtension();
 
                 $uploadedFile->move(
                     $this->getParameter('category_images_preview_directory'),
                     $fileName
                 );
 
-                $pathImagePreview = 'assets/images/categories/tmp/' . $fileName;
+                $pathImagePreview = 'assets/images/categories/tmp/'.$fileName;
             }
         }
 
@@ -1235,7 +1232,7 @@ class CatalogueController extends Controller
 
         $fileName = $product->getImageName();
 
-        if($request->files->all() && $request->files->all()['form']['image']) {
+        if ($request->files->all() && $request->files->all()['form']['image']) {
 
             $uploadedFile = $request->files->all()['form']['image'];
 
@@ -1246,9 +1243,9 @@ class CatalogueController extends Controller
             }
 
             $cacheManager = $this->get('liip_imagine.cache.manager');
-            $cacheManager->remove('assets/images/products/' . $fileName);
+            $cacheManager->remove('assets/images/products/'.$fileName);
 
-            $fileName = $product->getSlug() . '.' . $uploadedFile->guessExtension();
+            $fileName = $product->getSlug().'.'.$uploadedFile->guessExtension();
 
             $uploadedFile->move(
                 $this->getParameter('product_images_directory'),
@@ -1281,7 +1278,7 @@ class CatalogueController extends Controller
 
         $fileName = $category->getImageName();
 
-        if($request->files->all() && $request->files->all()['form']['image']) {
+        if ($request->files->all() && $request->files->all()['form']['image']) {
 
             $uploadedFile = $request->files->all()['form']['image'];
 
@@ -1292,9 +1289,9 @@ class CatalogueController extends Controller
             }
 
             $cacheManager = $this->get('liip_imagine.cache.manager');
-            $cacheManager->remove('assets/images/categories/' . $fileName);
+            $cacheManager->remove('assets/images/categories/'.$fileName);
 
-            $fileName = $category->getSlug() . '.' . $uploadedFile->guessExtension();
+            $fileName = $category->getSlug().'.'.$uploadedFile->guessExtension();
 
             $uploadedFile->move(
                 $this->getParameter('category_images_directory'),
@@ -1334,7 +1331,7 @@ class CatalogueController extends Controller
             return;
         }
 
-        if($request->files->all() && $request->files->all()['form']['image']) {
+        if ($request->files->all() && $request->files->all()['form']['image']) {
 
             $uploadedFile = $request->files->all()['form']['image'];
 
@@ -1344,7 +1341,7 @@ class CatalogueController extends Controller
 
             }
 
-            $name = $name . '.' . $uploadedFile->guessExtension();
+            $name = $name.'.'.$uploadedFile->guessExtension();
 
             $uploadedFile->move(
                 $this->getParameter('product_images_directory'),
@@ -1397,7 +1394,7 @@ class CatalogueController extends Controller
 
                 }
 
-                $name = $name . '.' . $uploadedFile->guessExtension();
+                $name = $name.'.'.$uploadedFile->guessExtension();
 
                 $uploadedFile->move(
                     $this->getParameter('category_images_directory'),

@@ -7,7 +7,6 @@ use AppBundle\Entity\Status;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
@@ -44,7 +43,7 @@ class OrderController extends Controller
         /**
          * @var $paginator \Knp\Component\Pager\Paginator
          */
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
 
         $orders = $paginator->paginate(
             $query,
@@ -80,7 +79,7 @@ class OrderController extends Controller
         // Switches the order to the right status
         switch ($request->query->get('statusId')) {
             case 1:
-                echo "Release payment and send message that the order is on the way to the customer " . $request->query->get('date');
+                echo "Release payment and send message that the order is on the way to the customer ".$request->query->get('date');
                 $order->setDispatchedAt(new \DateTime($request->query->get('date')));
                 break;
             case 2:
@@ -128,7 +127,7 @@ class OrderController extends Controller
             ));
 
         // Explode the orders from ids separated by comma. ie: 1,2,3,4,5 to Array
-        $ids = explode( ',', $request->query->get('ordersId') );
+        $ids = explode(',', $request->query->get('ordersId'));
 
         // Finds all the orders needing a status change
         for ($x = 0; $x < count($ids); $x++) {
@@ -325,7 +324,7 @@ class OrderController extends Controller
             200,
             array(
                 'Content-Type'          => 'application/pdf',
-                'Content-Disposition'   => 'inline; filename="' . $order->getId() . "-something" . '.pdf"'
+                'Content-Disposition'   => 'inline; filename="'.$order->getId()."-something".'.pdf"'
             )
         );
     }
@@ -340,7 +339,7 @@ class OrderController extends Controller
         $orders = [];
 
         // Explode the orders from ids separated by comma. ie: 1,2,3,4,5 to Array
-        $ids = explode( ',', $request->query->get('ordersId') );
+        $ids = explode(',', $request->query->get('ordersId'));
 
         // Finds all the orders invoices to print
         for ($x = 0; $x < count($ids); $x++) {
@@ -364,7 +363,7 @@ class OrderController extends Controller
             200,
             array(
                 'Content-Type'          => 'application/pdf',
-                'Content-Disposition'   => 'inline; filename="'. $ids . '-something-invoices.pdf"'
+                'Content-Disposition'   => 'inline; filename="'.$ids.'-something-invoices.pdf"'
             )
         );
     }
@@ -379,7 +378,7 @@ class OrderController extends Controller
         $orders = [];
 
         // Explode the orders from ids separated by comma. ie: 1,2,3,4,5 to Array
-        $ids = explode( ',', $request->query->get('ordersId') );
+        $ids = explode(',', $request->query->get('ordersId'));
 
         // Finds all the orders delivery notes to print
         for ($x = 0; $x < count($ids); $x++) {
@@ -403,7 +402,7 @@ class OrderController extends Controller
             200,
             array(
                 'Content-Type'          => 'application/pdf',
-                'Content-Disposition'   => 'inline; filename="'. $ids . '-something-dispatch-notes.pdf"'
+                'Content-Disposition'   => 'inline; filename="'.$ids.'-something-dispatch-notes.pdf"'
             )
         );
     }
@@ -418,7 +417,7 @@ class OrderController extends Controller
         $orders = [];
 
         // Explode the orders from ids separated by comma. ie: 1,2,3,4,5 to Array
-        $ids = explode( ',', $request->query->get('ordersId') );
+        $ids = explode(',', $request->query->get('ordersId'));
 
         // Finds all the orders invoices and delivery notes to print
         for ($x = 0; $x < count($ids); $x++) {
@@ -442,7 +441,7 @@ class OrderController extends Controller
             200,
             array(
                 'Content-Type'          => 'application/pdf',
-                'Content-Disposition'   => 'inline; filename="'. $ids . '-something-invoices-dispatch-notes.pdf"'
+                'Content-Disposition'   => 'inline; filename="'.$ids.'-something-invoices-dispatch-notes.pdf"'
             )
         );
     }

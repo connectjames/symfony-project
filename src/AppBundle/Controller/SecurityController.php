@@ -150,7 +150,7 @@ class SecurityController extends Controller
                     $em->persist($user);
                     $em->flush();
 
-                    $this->addFlash('success', 'Welcome back ' . $user->getFullName());
+                    $this->addFlash('success', 'Welcome back '.$user->getFullName());
 
                     return $this->get('security.authentication.guard_handler')
                         ->authenticateUserAndHandleSuccess(

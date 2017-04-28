@@ -249,6 +249,9 @@ class Product
         $this->slug = $slug;
     }
 
+    /**
+     * @param integer $display
+     */
     public function setDisplay($display)
     {
         $this->display = $display;
@@ -329,6 +332,9 @@ class Product
         return $this->featured;
     }
 
+    /**
+     * @param integer $featured
+     */
     public function setFeatured($featured)
     {
         $this->featured = $featured;
