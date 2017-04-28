@@ -115,6 +115,9 @@ class User implements UserInterface
         return $this->createdAt;
     }
 
+    /**
+     * @param \DateTime $createdAt
+     */
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
@@ -156,6 +159,9 @@ class User implements UserInterface
         $this->email = $email;
     }
 
+    /**
+     * @param string $password
+     */
     public function setPassword($password)
     {
         $this->password = $password;
@@ -236,6 +242,9 @@ class User implements UserInterface
         return json_decode($this->deliveryAddress, true);
     }
 
+    /**
+     * @param string $token
+     */
     public function setToken($token)
     {
         $this->token = $token;
@@ -331,7 +340,6 @@ class User implements UserInterface
     /**
      * Add whishlistProduct
      *
-     * @param \AppBundle\Entity\Product $whishlistProduct
      *
      * @return User
      */
@@ -349,7 +357,6 @@ class User implements UserInterface
     /**
      * Remove whishlistProduct
      *
-     * @param \AppBundle\Entity\Product $whishlistProduct
      */
     public function removeWhishlistProduct(Product $product)
     {
@@ -359,7 +366,7 @@ class User implements UserInterface
     /**
      * Get whishlistProducts
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Product[]
      */
     public function getWhishlistProducts()
     {

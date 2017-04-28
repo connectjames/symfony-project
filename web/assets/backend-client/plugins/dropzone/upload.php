@@ -1,5 +1,5 @@
 <?php
-	/**
+    /**
 	// Upload Example
 
 	$ds          = DIRECTORY_SEPARATOR;
@@ -17,5 +17,5 @@
 		move_uploaded_file($tempFile,$targetFile);
 		 
 	}
-	**/
+     **/
 ?>     

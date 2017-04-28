@@ -48,7 +48,7 @@ class DeliveryCalculatorController extends Controller
         $deliveryAmount = json_decode($delivery->getAmount(), true);
 
         $standardDeliveryAmount = 0;
-        foreach($deliveryAmount as $key => $value) {
+        foreach ($deliveryAmount as $key => $value) {
             if ($totalWeight <= intval($key)) {
                 $standardDeliveryAmount = $value;
                 break;
@@ -66,7 +66,7 @@ class DeliveryCalculatorController extends Controller
 
             $standardMultipleDeliveryAmount = 0;
             $standardDeliveryAmount = 0;
-            foreach($deliveryMultipleAmount as $key => $value) {
+            foreach ($deliveryMultipleAmount as $key => $value) {
                 $standardMultipleDeliveryAmount = $key;
                 $standardDeliveryAmount = $value;
                 break;
@@ -83,7 +83,7 @@ class DeliveryCalculatorController extends Controller
 
         $deliverySurchargeAmount = json_decode($deliverySurcharge->getAmount(), true);
 
-        foreach($deliverySurchargeAmount as $key => $value) {
+        foreach ($deliverySurchargeAmount as $key => $value) {
             $length = strlen($key);
 
             if (substr($postcode, 0, $length) === $key) {

@@ -5,7 +5,6 @@ namespace AppBundle\Service;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class Delivery extends Controller
 {
@@ -33,7 +32,7 @@ class Delivery extends Controller
         $deliveryAmount = 0;
 
         // Calculate the total shipping amount depending on the county of the user's delivery address
-        foreach($county->getDelivery()->getAmount() as $x => $x_value) {
+        foreach ($county->getDelivery()->getAmount() as $x => $x_value) {
             if ($totalWeight <= intval($x)) {
                 $deliveryAmount = $x_value;
                 break;
@@ -64,7 +63,7 @@ class Delivery extends Controller
         $user = $this->getUser();
 
         // Calculate the total shipping amount depending on the county of the user's delivery address
-        foreach($user->getDelivery()->getAmount() as $x => $x_value) {
+        foreach ($user->getDelivery()->getAmount() as $x => $x_value) {
             if ($totalWeight <= intval($x)) {
                 $deliveryAmount = $x_value;
                 break;

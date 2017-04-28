@@ -29,7 +29,7 @@ class User extends Base
      * @param string $accessToken
      * @param string $accessTokenSecret
      */
-    public function __construct($consumerKey,$consumerSecret,$accessToken,$accessTokenSecret)
+    public function __construct($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret)
     {
         $this->_consumerKey = $consumerKey;
         $this->_consumerSecret = $consumerSecret;
@@ -41,9 +41,9 @@ class User extends Base
      * @param string $url
      * @param array $parameters
      * @param $method
-     * @return array
+     * @return string[]
      */
-    protected function _buildHeaders($url,array $parameters = null,$method)
+    protected function _buildHeaders($url, array $parameters = null, $method)
     {
         $oauthHeaders = array(
             'oauth_version' => '1.0',
@@ -56,37 +56,37 @@ class User extends Base
 
         $data = $oauthHeaders;
         if ($method == self::METHOD_GET) {
-            $data = array_merge($oauthHeaders,$parameters);
+            $data = array_merge($oauthHeaders, $parameters);
         }
-        $oauthHeaders['oauth_signature'] = $this->_buildOauthSignature($url,$data,$method);
+        $oauthHeaders['oauth_signature'] = $this->_buildOauthSignature($url, $data, $method);
         ksort($oauthHeaders);
         $oauthHeader = array();
 
-        foreach($oauthHeaders as $key => $value) {
-            $oauthHeader[] = $key . '="' . rawurlencode($value) . '"';
+        foreach ($oauthHeaders as $key => $value) {
+            $oauthHeader[] = $key.'="'.rawurlencode($value).'"';
         }
 
-        $headers[] = 'Authorization: OAuth ' . implode(', ', $oauthHeader);
+        $headers[] = 'Authorization: OAuth '.implode(', ', $oauthHeader);
         return $headers;
     }
 
     /**
-     * @param $url
+     * @param string $url
      * @param array $params
      * @param $method
      * @return string
      */
-    private function _buildOauthSignature($url,array $params,$method)
+    private function _buildOauthSignature($url, array $params, $method)
     {
         ksort($params);
         $sortedParams = array();
 
-        foreach($params as $key=>$value) {
-            $sortedParams[] = $key . '=' . $value;
+        foreach ($params as $key=>$value) {
+            $sortedParams[] = $key.'='.$value;
         }
 
-        $signatureBaseString =  $method . "&" . rawurlencode($url) . '&' . rawurlencode(implode('&', $sortedParams));
-        $compositeKey = rawurlencode($this->_consumerSecret) . '&' . rawurlencode($this->_accessTokenSecret);
+        $signatureBaseString = $method."&".rawurlencode($url).'&'.rawurlencode(implode('&', $sortedParams));
+        $compositeKey = rawurlencode($this->_consumerSecret).'&'.rawurlencode($this->_accessTokenSecret);
         return base64_encode(hash_hmac('sha1', $signatureBaseString, $compositeKey, true));
     }
 }

@@ -2,21 +2,15 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\County;
 use AppBundle\Entity\Dropshipper;
 use AppBundle\Entity\Order;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Status;
-use AppBundle\Entity\User;
 use AppBundle\Form\CheckoutDeliveryForm;
 use AppBundle\Form\CheckoutInvoiceForm;
-use AppBundle\Form\OrderForm;
-use AppBundle\Service\Delivery;
-use AppBundle\Service\Basket;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class CheckoutController extends Controller
 {
@@ -186,37 +180,37 @@ class CheckoutController extends Controller
 
         $curl = curl_init();
 
-        $str = $this->getParameter('sagepay_key') . ":" . $this->getParameter('sagepay_password');
+        $str = $this->getParameter('sagepay_key').":".$this->getParameter('sagepay_password');
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://pi-test.sagepay.com/api/v1/transactions",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => '{' .
-                '"transactionType": "Payment",' .
-                '"paymentMethod": {' .
-                '    "card": {' .
-                '        "merchantSessionKey": "' . $merchantSession . '",' .
-                '        "cardIdentifier": "' . $cardIdentifier . '"' .
-                '    }' .
-                '},' .
-                '"vendorTxCode": "demotransaction' . time() . '",' .
-                '"amount": ' . ($basketDetails["deliveryAmount"] + $basketDetails["basketTotal"]) * 120 .',' .
-                '"currency": "GBP",' .
-                '"description": "Demo transaction",' .
-                '"apply3DSecure": "UseMSPSetting",' .
-                '"customerFirstName": "' . $invoiceDetails['invoiceAddress']["firstName"] . '",' .
-                '"customerLastName": "' . $invoiceDetails['invoiceAddress']["lastName"] . '",' .
-                '"billingAddress": {' .
-                '    "address1": "' . $invoiceDetails['invoiceAddress']["address1"] . '",' .
-                '    "city": "' . $invoiceDetails['invoiceAddress']["city"] . '",' .
-                '    "postalCode": "' . $invoiceDetails['invoiceAddress']["postcode"] . '",' .
-                '    "country": "GB"' .
-                '},' .
-                '"entryMethod": "Ecommerce"' .
+            CURLOPT_POSTFIELDS => '{'.
+                '"transactionType": "Payment",'.
+                '"paymentMethod": {'.
+                '    "card": {'.
+                '        "merchantSessionKey": "'.$merchantSession.'",'.
+                '        "cardIdentifier": "'.$cardIdentifier.'"'.
+                '    }'.
+                '},'.
+                '"vendorTxCode": "demotransaction'.time().'",'.
+                '"amount": '.($basketDetails["deliveryAmount"] + $basketDetails["basketTotal"]) * 120.','.
+                '"currency": "GBP",'.
+                '"description": "Demo transaction",'.
+                '"apply3DSecure": "UseMSPSetting",'.
+                '"customerFirstName": "'.$invoiceDetails['invoiceAddress']["firstName"].'",'.
+                '"customerLastName": "'.$invoiceDetails['invoiceAddress']["lastName"].'",'.
+                '"billingAddress": {'.
+                '    "address1": "'.$invoiceDetails['invoiceAddress']["address1"].'",'.
+                '    "city": "'.$invoiceDetails['invoiceAddress']["city"].'",'.
+                '    "postalCode": "'.$invoiceDetails['invoiceAddress']["postcode"].'",'.
+                '    "country": "GB"'.
+                '},'.
+                '"entryMethod": "Ecommerce"'.
                 '}',
             CURLOPT_HTTPHEADER => array(
-                "Authorization: Basic " . base64_encode($str),
+                "Authorization: Basic ".base64_encode($str),
                 "Cache-Control: no-cache",
                 "Content-Type: application/json"
             ),
@@ -290,7 +284,7 @@ class CheckoutController extends Controller
         $em->persist($order);
         $em->flush();
 
-         //Send email to customer, confirmation of new order
+            //Send email to customer, confirmation of new order
         $message = \Swift_Message::newInstance()
             ->setSubject('Auto-Confirmation of your order from Spill Kits Direct')
             ->setFrom($this->getParameter('mailer_user'))
@@ -409,15 +403,15 @@ class CheckoutController extends Controller
 
         $curl = curl_init();
 
-        $str = $this->getParameter('sagepay_key') . ":" . $this->getParameter('sagepay_password');
+        $str = $this->getParameter('sagepay_key').":".$this->getParameter('sagepay_password');
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://pi-test.sagepay.com/api/v1/merchant-session-keys",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => '{ "vendorName":"' . $this->getParameter('sagepay_vendor') . '"}',
+            CURLOPT_POSTFIELDS => '{ "vendorName":"'.$this->getParameter('sagepay_vendor').'"}',
             CURLOPT_HTTPHEADER => array(
-                "Authorization: Basic " . base64_encode($str),
+                "Authorization: Basic ".base64_encode($str),
                 "Cache-Control: no-cache",
                 "Content-Type: application/json"
             ),

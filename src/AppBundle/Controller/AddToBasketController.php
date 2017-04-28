@@ -70,8 +70,7 @@ class AddToBasketController extends Controller
         } else {
             // If a basket does not already exist then...
 
-            $basketProducts = array
-            (
+            $basketProducts = array(
                 array(
                     'id' => $product->getId(),
                     'name' => $product->getName(),
