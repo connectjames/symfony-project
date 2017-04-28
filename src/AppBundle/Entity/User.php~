@@ -1,0 +1,381 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
+ * @ORM\Table(name="user")
+ * @UniqueEntity(fields={"email"}, message="It looks like your already have an account!")
+ */
+class User implements UserInterface
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $createdAt;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $email;
+
+    /**
+     * The encoded password
+     *
+     * @ORM\Column(type="string")
+     */
+    private $password;
+
+    /**
+     * A non-persisted field that's used to create the encoded password.
+     *
+     * @Assert\NotBlank(groups={"Registration"})
+     * @var string
+     */
+    private $plainPassword;
+
+    /**
+     * @ORM\Column(type="json_array")
+     */
+    private $roles = [];
+
+    /**
+     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=100)
+     */
+    private $firstName;
+
+    /**
+     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=100)
+     */
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $invoiceAddress;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $deliveryAddress;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $token;
+
+    /**
+     * @ORM\Column(type="boolean", options={"default":1}, nullable=true)
+     */
+    private $newsletter;
+
+    /**
+     * @ORM\Column(type="decimal", scale=2, nullable=true)
+     */
+    private $discount;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Delivery", inversedBy="users")
+     * @ORM\JoinColumn(name="delivery_id", referencedColumnName="id")
+     */
+    private $delivery;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Order", mappedBy="user", fetch="EXTRA_LAZY")
+     * @ORM\OrderBy({"createdAt" = "DESC"})
+     */
+    private $orders;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Product")
+     * @ORM\JoinTable(name="whishlist_products")
+     * * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private $whishlistProducts;
+
+
+    public function __construct()
+    {
+        $this->orders = new ArrayCollection();
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    public function getRoles()
+    {
+        $roles = $this->roles;
+
+        // give everyone ROLE_USER!
+        if (!in_array('ROLE_USER', $roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+
+        return $roles;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function getSalt()
+    {
+    }
+
+    public function eraseCredentials()
+    {
+        $this->plainPassword = null;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+        // forces the object to look "dirty" to Doctrine. Avoids
+        // Doctrine *not* saving this entity, if only plainPassword changes
+        $this->password = null;
+    }
+
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
+    public function getFullName()
+    {
+        return trim($this->getFirstName().' '.$this->getLastName());
+    }
+
+    public function setInvoiceAddress($invoiceAddress)
+    {
+        $this->invoiceAddress = $invoiceAddress;
+
+        return $this;
+    }
+
+    public function getInvoiceAddress()
+    {
+        return json_decode($this->invoiceAddress, true);
+    }
+
+    public function setDeliveryAddress($deliveryAddress)
+    {
+        $this->deliveryAddress = json_encode($deliveryAddress);
+
+        return $this;
+    }
+
+    public function getDeliveryAddress()
+    {
+        return json_decode($this->deliveryAddress, true);
+    }
+
+    public function getCounty()
+    {
+        return json_decode('{"Aberdeenshire":"Scotland","Anglesey":"England","Angus":"Scotland","APO/FPO":"England","Argyll":"Outer Islands","Avon":"England","Ayrshire":"England","Banffshire":"Scotland","Bedfordshire":"England","Berkshire":"England","Berwickshire":"Scotland","BFPO":"England","Birmingham":"England","Bristol":"England","Buckinghamshire":"England","Caithness":"Scotland Highlands","Cambridgeshire":"England","Cardiff":"England","Carmarthenshire":"England","Ceredigion":"England","Channel Islands":"Outer Islands","Cheshire":"England","Clackmannanshire":"Scotland","Cleveland":"England","Clwyd":"England","Cornwall":"England","County Antrim":"Nth Ireland","County Armagh":"Nth Ireland","County Down":"Nth Ireland","County Fermanagh":"Nth Ireland","County Londonderry":"Nth Ireland","County Tyrone":"Nth Ireland","Cumbria":"England","Denbighshire":"England","Derbyshire":"England","Devon":"England","Dorset":"England","Dumfriesshire":"Scotland","Dunbartonshire":"Scotland","Durham":"England","Dyfed":"England","East Lothian":"Scotland","East Sussex":"England","Edinburgh":"Scotland","Essex":"England","Fife":"Scotland","Flintshire":"England","Glamorgan":"England","Glasgow":"Scotland","Gloucestershire":"England","Gwent":"England","Gwynedd":"England","Hampshire":"England","Herefordshire":"England","Hertfordshire":"England","Inverness-shire":"Scotland Highlands","Isle of Man":"Isle of Man","Isle of Mull":"Outer Islands","Isle of Skye":"Scotland Highlands","Isle of Wight":"England","Isles of Scilly":"Outer Islands","Kent":"England","Kincardineshire":"Scotland","Kinross-shire":"Scotland","Kirkcudbrightshire":"Scotland","Lanarkshire":"Scotland","Lancashire":"England","Leicestershire":"England","Lincolnshire":"England","London":"England","Manchester":"England","Merseyside":"England","Mid Glamorgan":"England","Middlesex":"England","Midlothian":"Scotland","Monmouthshire":"England","Moray":"Scotland Highlands","Nairnshire":"Scotland","Norfolk":"England","North Humberside":"England","North Yorkshire":"England","Northamptonshire":"England","Northumberland":"England","Nottinghamshire":"England","Orkney":"Outer Islands","Oxfordshire":"England","Peebleshire":"Scotland","Pembrokeshire":"England","Perthshire":"Scotland","Powys":"England","Renfrewshire":"England","Rhondda Cynon Taff":"England","Ross-shire":"Scotland Highlands","Roxburghshire":"Scotland","Rutland":"England","Selkirkshire":"Scotland","Shetland":"Outer Islands","Shropshire":"England","Somerset":"England","South Glamorgan":"England","South Humberside":"England","South Yorkshire":"England","Staffordshire":"England","Stirlingshire":"Scotland","Suffolk":"England","Surrey":"England","Sutherland":"Scotland Highlands","Tyne and Wear":"England","Warwickshire":"England","West Glamorgan":"England","West Lothian":"Scotland","West Midlands":"England","West Sussex":"England","West Yorkshire":"England","Wigtownshire":"Scotland","Wiltshire":"England","Worcestershire":"England","Yorkshire":"England"}', true);
+    }
+
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    public function getDiscount()
+    {
+        return $this->discount;
+    }
+
+    public function setDiscount($discount)
+    {
+        $this->discount = $discount;
+    }
+
+    public function setNewsletter($newsletter)
+    {
+        $this->newsletter = $newsletter;
+
+        return $this;
+    }
+
+    public function getNewsletter()
+    {
+        return $this->newsletter;
+    }
+
+    /**
+     * Set delivery
+     *
+     * @param \AppBundle\Entity\Delivery $delivery
+     *
+     * @return User
+     */
+    public function setDelivery(Delivery $delivery = null)
+    {
+        $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * Get delivery
+     *
+     * @return \AppBundle\Entity\Delivery
+     */
+    public function getDelivery()
+    {
+        return $this->delivery;
+    }
+
+    /**
+     * Add order
+     *
+     * @param \AppBundle\Entity\Order $order
+     *
+     * @return User
+     */
+    public function addOrder(Order $order)
+    {
+        $this->orders[] = $order;
+
+        return $this;
+    }
+
+    /**
+     * Remove order
+     *
+     * @param \AppBundle\Entity\Order $order
+     */
+    public function removeOrder(Order $order)
+    {
+        $this->orders->removeElement($order);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * Add whishlistProduct
+     *
+     * @param \AppBundle\Entity\Product $whishlistProduct
+     *
+     * @return User
+     */
+    public function addWhishlistProduct(Product $product)
+    {
+        if ($this->whishlistProducts->contains($product)) {
+            return;
+        }
+
+        $this->whishlistProducts[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Remove whishlistProduct
+     *
+     * @param \AppBundle\Entity\Product $whishlistProduct
+     */
+    public function removeWhishlistProduct(Product $product)
+    {
+        $this->whishlistProducts->removeElement($product);
+    }
+
+    /**
+     * Get whishlistProducts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWhishlistProducts()
+    {
+        return $this->whishlistProducts;
+    }
+}

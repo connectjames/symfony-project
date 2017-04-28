@@ -1,0 +1,660 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('assets/backend-client/css/layout-nestable.css') }}" rel="stylesheet" type="text/css"
+          xmlns="http://www.w3.org/1999/html"/>
+{% endblock %}
+{% block menu_catalogue_active %}class="active"{% endblock %}
+{% block menu_products_active %}class="active"{% endblock %}
+{% block body %}
+    <!-- page title -->
+    <header id="page-header">
+        <h1>Products</h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ path('products') }}">Products</a></li>
+            <li class="active">View Products</li>
+        </ol>
+    </header>
+    <!-- /page title -->
+    <div id="content" class="padding-20">
+        <!--
+                                PANEL CLASSES:
+                                    panel-default
+                                    panel-danger
+                                    panel-warning
+                                    panel-info
+                                    panel-success
+
+                                INFO: 	panel collapse - stored on user localStorage (handled by app.js _panels() function).
+                                        All pannels should have an unique ID or the panel collapse status will not be stored!
+                            -->
+        <div id="product" class="panel panel-default">
+            <div class="panel-heading">
+                <div class="pull-left"><a href="{{ path('products') }}" title="Back to Products"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a></div>
+                <strong class="center-text">{% if previousProduct %}<a href="/admin/products/view/{{ previousProduct }}" title="Previous Product"><i class="fa fa-chevron-left" aria-hidden="true"></i> previous |</a> {% endif %}Product {{ product.id }} - {{ product.name }}{% if nextProduct %} <a href="/admin/products/view/{{ nextProduct }}" title="Next Product">| next <i class="fa fa-chevron-right" aria-hidden="true"></i></a>{% endif %}</strong>
+            </div>
+
+            <!-- panel content -->
+            <div class="panel-body">
+                <div id="top-bar-action" class="alert alert-info margin-bottom-30 action-table">
+                    <div id="js-display" class="pull-left col-md-3col-sm-6">
+                        <label class="switch switch-info switch-round">Display
+                            <input type="checkbox"
+                                   {% if product.display == 1 %}checked=""{% endif %}
+                                   data-url="{{ path('products_change_display_or_featured_product', {'id': product.id, 'display': product.display + 1}) }}"
+                            >
+                            <span class="switch-label" data-on="YES" data-off="NO"></span>
+                        </label>
+                    </div>
+                    <div id="js-featured" class="pull-left col-md-3col-sm-6">
+                        <label class="switch switch-info switch-round">Featured
+                            <input type="checkbox"
+                                   {% if product.featured == 1 %}checked=""{% endif %}
+                                   data-url="{{ path('products_change_display_or_featured_product', {'id': product.id, 'featured': product.featured + 1}) }}"
+                            >
+                            <span class="switch-label" data-on="YES" data-off="NO"></span>
+                        </label>
+                    </div>
+                    <div class="pull-right">
+                        <button id="js-save-edit-product" type="button" class="btn btn-success">Save Product Changes</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /panel content -->
+
+            <form name="product-form" method="get" id="product-form" action="{{ path('products_edit', {id: product.id}) }}" data-url="{{ path('products_view', {id: product.id}) }}">
+
+                <div class="col-md-6 top-space">
+
+                    <!-- -- -->
+                    <div id="main-details" class="panel panel-default">
+
+                        <div class="panel-heading">
+
+                        <span class="elipsis"><!-- panel title -->
+                            <strong>Main Details</strong>
+                        </span>
+
+                            <!-- right options -->
+                            <ul class="options pull-right list-inline">
+                                <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>
+                                <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand"></i></a></li>
+                            </ul>
+                            <!-- /right options -->
+
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="name" class="control-label required">Name*</label><input type="text" name="name" id="name" required="required" class="form-control" value="{{ product.name }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sku" class="control-label required">SKU*</label><input type="text" name="sku" id="sku" required="required" class="form-control" value="{{ product.sku }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price" class="control-label required">Price*</label><input type="number" name="price" id="price" required="required" class="form-control" min="0.01" step="0.01" value="{{ product.price }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="weight" class="control-label required">Weight*</label><input type="number" name="weight" id="weight" required="required" class="form-control" min="0" value="{{ product.weight }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / -->
+
+                </div>
+
+                <div class="col-md-6 top-space">
+
+                    <!-- -- -->
+                    <div id="seo-details" class="panel panel-default">
+
+                        <div class="panel-heading">
+
+                        <span class="elipsis"><!-- panel title -->
+                            <strong>SEO Details</strong>
+                        </span>
+
+                            <!-- right options -->
+                            <ul class="options pull-right list-inline">
+                                <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>
+                                <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand"></i></a></li>
+                            </ul>
+                            <!-- /right options -->
+
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <span data-toggle="tooltip" title="If not entered, it will be self-generated"><label for="url" class="control-label required">URL Key</label><input type="text" name="url" id="url" class="form-control" value="{{ product.slug }}"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="metaTitle" class="control-label required">Meta Title</label>
+                                        <div id="charNumTitle" class="pull-right"></div>
+                                        <input type="text" name="metaTitle" id="metaTitle" maxlength="55" class="form-control" value="{{ product.metaTitle }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="metaKeywords" class="control-label required">Meta Keywords</label><input type="text" name="metaKeywords" id="metaKeywords" class="form-control" value="{{ product.metaKeywords }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="metaDescription" class="control-label required">Meta Description</label>
+                                        <div id="charNumDesc" class="pull-right"></div>
+                                        <textarea name="metaDescription" id="metaDescription" rows="3" maxlength="160" class="form-control">{{ product.metaDescription }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- / -->
+
+                </div>
+
+                <div class="col-md-12">
+
+                    <!-- -- -->
+                    <div id="table-details" class="panel panel-default">
+
+                        <div class="panel-heading">
+
+                        <span class="elipsis"><!-- panel title -->
+                            <strong>Specification Details</strong>
+                        </span>
+
+                            <!-- right options -->
+                            <ul class="options pull-right list-inline">
+                                <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>
+                                <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand"></i></a></li>
+                            </ul>
+                            <!-- /right options -->
+
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="capacityTable" class="control-label required">Capacity</label><input type="text" name="capacityTable" id="capacityTable" class="form-control" value="{{ product.capacityTable }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contentsTable" class="control-label required">Contents</label><input type="text" name="contentsTable" id="contentsTable" class="form-control" value="{{ product.contentsTable }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="productCodeTable" class="control-label required">Product Code</label><input type="text" name="productCodeTable" id="productCodeTable" class="form-control" value="{{ product.productCodeTable }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="weightTable" class="control-label required">Weight</label><input type="text" name="weightTable" id="weightTable" class="form-control" value="{{ product.weightTable }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dimensionTable" class="control-label required">Dimension</label><input type="text" name="dimensionTable" id="dimensionTable" class="form-control" value="{{ product.dimensionTable }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="descriptionTable" class="control-label required">Description</label><input type="text" name="descriptionTable" id="descriptionTable" class="form-control" value="{{ product.descriptionTable }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="packQuantityTable" class="control-label required">Pack quantity</label><input type="text" name="packQuantityTable" id="packQuantityTable" class="form-control" value="{{ product.packQuantityTable }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- / -->
+
+                </div>
+
+            </form>
+
+            <div class="col-md-12">
+
+                <!-- -- -->
+                <div id="image-details" class="panel panel-default">
+
+                    <div class="panel-heading">
+
+                            <span class="elipsis"><!-- panel title -->
+                                <strong>Image Details</strong>
+                            </span>
+
+                        <!-- right options -->
+                        <ul class="options pull-right list-inline">
+                            <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>
+                            <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand"></i></a></li>
+                        </ul>
+                        <!-- /right options -->
+
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <form name="image-form" id="image-form" method="post" enctype="multipart/form-data" data-url="{{ path('products_image_save', {'id': product.id}) }}" action="{{ path('products_image_preview') }}">
+                                        <div id="form" class="pull-left"><div class="form-group"><label class="control-label required" for="form_image">Product Image</label><input type="file" id="form_image" name="form[image]" required="required"></div>
+                                            <input type="hidden" id="form__token" name="form[_token]" value="{{ csrf_token('authenticate') }}"></div>
+                                        <button id="js-image-preview" type="submit" class="btn btn-success pull-right">Preview Image</button>
+                                    </form>
+                                    <div id="js-image-detail-preview">
+                                        <p>
+                                            <img src="{{ asset('assets/images/products/' ~ product.imageName) | imagine_filter('thumbnail') }}" height="45" width="45">
+                                            <img src="{{ asset('assets/images/products/' ~ product.imageName) | imagine_filter('basket') }}" height="80" width="80">
+                                            <img src="{{ asset('assets/images/products/' ~ product.imageName) | imagine_filter('product') }}" height="300" width="300">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / -->
+            </div>
+
+            <div class="col-md-12">
+
+                <!-- -- -->
+                <div id="product-details" class="panel panel-default">
+
+                    <div class="panel-heading">
+
+                    <span class="elipsis"><!-- panel title -->
+                        <strong>Product Descriptions</strong>
+                    </span>
+
+                        <!-- right options -->
+                        <ul class="options pull-right list-inline">
+                            <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>
+                            <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand"></i></a></li>
+                        </ul>
+                        <!-- /right options -->
+
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div id="short-description" class="form-group"><label class="control-label required">Short Description</label>
+                                    <textarea id="shortDescription" class="summernote form-control" data-height="100" data-lang="en-US">{{ product.shortDescription }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <div id="description" class="form-group"><label class="control-label required">Description</label>
+                                    <textarea class="summernote form-control" data-height="200" data-lang="en-US">{{ product.description }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- / -->
+
+            </div>
+
+            {#<div class="col-md-12">#}
+
+                {#<!-- -- -->#}
+                {#<div id="seo-details" class="panel panel-default">#}
+
+                    {#<div class="panel-heading">#}
+
+                        {#<span class="elipsis"><!-- panel title -->#}
+                            {#<strong>Specifications Details (Table)</strong>#}
+                        {#</span>#}
+
+                        {#<!-- right options -->#}
+                        {#<ul class="options pull-right list-inline">#}
+                            {#<li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>#}
+                            {#<li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand"></i></a></li>#}
+                        {#</ul>#}
+                        {#<!-- /right options -->#}
+
+                    {#</div>#}
+
+                    {#<div class="panel-body">#}
+                        {#<div class="row">#}
+                            {#<div class="col-md-12 col-sm-12">#}
+                                {#<div class="form-group">#}
+                                    {#<span data-toggle="tooltip" title="If not entered, it will be self-generated"><label for="url" class="control-label required">spec1</label><input type="text" name="url" id="url" class="form-control" value="{{ product.specification["spec1"] }}"></span>#}
+                                {#</div>#}
+                                {#<div class="form-group">#}
+                                    {#<label for="metaTitle" class="control-label required">Meta Title</label>#}
+                                    {#<div id="charNumTitle" class="pull-right"></div>#}
+                                    {#<input type="text" name="metaTitle" id="metaTitle" maxlength="55" class="form-control" value="{{ product.metaTitle }}">#}
+                                {#</div>#}
+                                {#<div class="form-group">#}
+                                    {#<label for="metaKeywords" class="control-label required">Meta Keywords</label><input type="text" name="metaKeywords" id="metaKeywords" class="form-control" value="{{ product.metaKeywords }}">#}
+                                {#</div>#}
+                                {#<div class="form-group">#}
+                                    {#<label for="metaDescription" class="control-label required">Meta Description</label>#}
+                                    {#<div id="charNumDesc" class="pull-right"></div>#}
+                                    {#<textarea name="metaDescription" id="metaDescription" rows="3" maxlength="160" class="form-control">{{ product.metaDescription }}</textarea>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+
+                    {#</div>#}
+
+                {#</div>#}
+                {#<!-- / -->#}
+
+            {#</div>#}
+
+            <div class="col-md-6">
+
+                <!-- -- -->
+                <div id="allocation-details" class="panel panel-default">
+
+                    <div class="panel-heading">
+
+                    <span class="elipsis"><!-- panel title -->
+                        <strong>Product Allocation</strong>
+                    </span>
+
+                        <!-- right options -->
+                        <ul class="options pull-right list-inline">
+                            <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>
+                            <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand"></i></a></li>
+                        </ul>
+                        <!-- /right options -->
+
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group"><label for="county-d" class="control-label required">Dropshipper*</label>
+                                    <select id="dropshipper" class="form-control input-xsmall input-inline">
+                                        <option value="{{ product.dropshipper.id }}" selected>{{ product.dropshipper.name }}</option>
+                                        {% for dropshipper in dropshippers %}
+                                            <option value="{{ dropshipper.id }}">{{ dropshipper.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group"><label class="control-label required">Categories <i>(Red = disabled)</i></label>
+                                    <div class="dd" id="nestable">
+
+                                        {% if categoriesMenu is empty %}
+                                            <li class="dd-empty"></li>
+                                        {% endif %}
+
+                                        <ol class="dd-list">
+
+                                            {% for categoryMenu in categoriesMenu %}
+                                                {% if categoryMenu|length > 1 and categoryMenu["children"] is iterable %}
+
+                                                    <li class="dd-item dd3-item" data-id="{{ categoryMenu["url"] }}">
+                                                        <div class="dd-handle dd3-handle"></div>
+                                                        {% for category in categories %}
+                                                            {% if category.slug == categoryMenu["url"] %}
+                                                                <div class="dd3-content">
+                                                                    <a href="{{ path('categories_view', {'id': category.id }) }}" title="View {{ category.name }}" {% if category.display %}{% else %}class="bg-danger"{% endif %} target="_blank">{{ category.name|upper }} <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                                                    <div class="pull-right">
+                                                                        <input type="checkbox" name="categories" value={{ category.id }}
+                                                                            {% for productCategory in productCategories %}
+                                                                            {% if category.id == productCategory.id %}
+                                                                        checked
+                                                                                {% endif %}
+                                                                                {% endfor %}
+                                                                        >
+                                                                    </div>
+                                                                </div>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        <ol class="dd-list">
+                                                            {% for itemInChildren in categoryMenu["children"] %}
+                                                                {% if itemInChildren|length > 1 and itemInChildren["children"] is iterable %}
+
+                                                                    <li class="dd-item dd3-item" data-id="{{ itemInChildren["url"] }}">
+                                                                        <div class="dd-handle dd3-handle"></div>
+                                                                        {% for category in categories %}
+                                                                        {% if category.slug == itemInChildren["url"] %}
+                                                                        <div class="dd3-content">
+                                                                            <a href="{{ path('categories_view', {'id': category.id }) }}" title="View {{ category.name }}" {% if category.display %}{% else %}class="bg-danger"{% endif %} target="_blank">{{ category.name|upper }} <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                                                            <div class="pull-right">
+                                                                                <input type="checkbox" name="categories" value={{ category.id }}
+                                                                            {% for productCategory in productCategories %}
+                                                                            {% if category.id == productCategory.id %}
+                                                                                checked
+                                                                                        {% endif %}
+                                                                                        {% endfor %}
+                                                                                >
+                                                                            </div>
+                                                                            {% endif %}
+                                                                            {% endfor %}
+                                                                            <ol class="dd-list">
+                                                                                {% for itemInChildren in itemInChildren["children"] %}
+                                                                                    {% if itemInChildren|length > 1 and itemInChildren["children"] is iterable %}
+
+                                                                                    {% else %}
+
+                                                                                        <li class="dd-item dd3-item" data-id="{{ itemInChildren["url"] }}">
+                                                                                            <div class="dd-handle dd3-handle"></div>
+                                                                                            {% for category in categories %}
+                                                                                                {% if category.slug == itemInChildren["url"] %}
+                                                                                                    <div class="dd3-content">
+                                                                                                        <a href="{{ path('categories_view', {'id': category.id }) }}" title="View {{ category.name }}" {% if category.display %}{% else %}class="bg-danger"{% endif %} target="_blank">{{ category.name|upper }} <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                                                                                        <div class="pull-right">
+                                                                                                            <input type="checkbox" name="categories" value={{ category.id }}
+                                                                                                        {% for productCategory in productCategories %}
+                                                                                                        {% if category.id == productCategory.id %}
+                                                                                                            checked
+                                                                                                                    {% endif %}
+                                                                                                                    {% endfor %}
+                                                                                                            >
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                            {% endfor %}
+                                                                                        </li>
+
+                                                                                    {% endif %}
+                                                                                {% endfor %}
+                                                                            </ol>
+                                                                        </div>
+                                                                    </li>
+
+                                                                {% else %}
+
+                                                                    <li class="dd-item dd3-item" data-id="{{ itemInChildren["url"] }}">
+                                                                        <div class="dd-handle dd3-handle"></div>
+                                                                        {% for category in categories %}
+                                                                            {% if category.slug == itemInChildren["url"] %}
+                                                                                <div class="dd3-content">
+                                                                                    <a href="{{ path('categories_view', {'id': category.id }) }}" title="View {{ category.name }}" {% if category.display %}{% else %}class="bg-danger"{% endif %} target="_blank">{{ category.name|upper }} <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                                                                    <div class="pull-right">
+                                                                                        <input type="checkbox" name="categories" value={{ category.id }}
+                                                                                            {% for productCategory in productCategories %}
+                                                                                            {% if category.id == productCategory.id %}
+                                                                                        checked
+                                                                                                {% endif %}
+                                                                                                {% endfor %}
+                                                                                        >
+                                                                                    </div>
+                                                                                </div>
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    </li>
+
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </ol>
+                                                    </li>
+
+                                                {% else %}
+
+                                                    <li class="dd-item dd3-item" data-id="{{ categoryMenu["url"] }}">
+                                                        <div class="dd-handle dd3-handle"></div>
+                                                        {% for category in categories %}
+                                                            {% if category.slug == categoryMenu["url"] %}
+                                                                <div class="dd3-content">
+                                                                    <a href="{{ path('categories_view', {'id': category.id }) }}" title="View {{ category.name }}" {% if category.display %}{% else %}class="bg-danger"{% endif %} target="_blank">{{ category.name|upper }} <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                                                    <div class="pull-right">
+                                                                        <input type="checkbox" name="categories" value={{ category.id }}
+                                                                                {% for productCategory in productCategories %}
+                                                                                {% if category.id == productCategory.id %}
+                                                                        checked
+                                                                                {% endif %}
+                                                                                {% endfor %}
+                                                                        >
+                                                                    </div>
+                                                                </div>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </li>
+
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <!-- -- -->
+                <div id="related-products" class="panel panel-default">
+
+                    <div class="panel-heading">
+
+                    <span class="elipsis"><!-- panel title -->
+                        <strong>Related Products</strong>
+                    </span>
+
+                        <!-- right options -->
+                        <ul class="options pull-right list-inline">
+                            <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>
+                            <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand"></i></a></li>
+                        </ul>
+                        <!-- /right options -->
+
+                    </div>
+
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <div id="js-search" class="dataTables_custom">
+                                        {{ knp_pagination_filter(products, {'prod.name' : 'Product Name'}) }}
+                                    </div>
+                                    <div id="js-table">
+                                        <table class="table table-striped table-bordered table-hover table-responsive" id="datatable_sample">
+                                            <thead>
+                                            <tr>
+                                                <th class="js-table-checkbox col-sm-1">
+                                                    <input type="checkbox">
+                                                </th>
+                                                <th class="col-sm-1">ID</th>
+                                                <th class="col-sm-3">Name</th>
+                                                <th class="col-sm-1">SKU</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            {% for singleProduct in products %}
+                                                <tr id="product-{{ singleProduct.id }}" class="odd gradeX">
+                                                    <td class="option-item"><input type="checkbox" id="prod{{ singleProduct.id }}" name="products" value={{ singleProduct.id }}></td>
+                                                    <td>{{ singleProduct.id }}</td>
+                                                    <td>{{ singleProduct.name }}</td>
+                                                    <td>{{ singleProduct.sku }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        <div id="nav-pages" class="navigation text-center">
+                                            {{ knp_pagination_render(products) }}
+                                        </div>
+                                        <div id="js-products-list">
+                                            <i>Related Products Selected (Save if altered):</i><br>
+                                            {% for relatedProductSelected in relatedProductsSelected %}
+                                                {% if relatedProductSelected %}
+                                                    <div class="alert alert-mini alert-info special-product margin-right-6"><!-- INFO -->
+                                                        {{ relatedProductSelected.id }} - {{ relatedProductSelected.name }}
+                                                        <a href="#" data-id="{{ relatedProductSelected.id }}" class="btn btn-link nopadding-right js-remove-related-product">
+                                                            <span class="fa fa-close"></span>
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- / -->
+
+            </div>
+
+            <a href="{{ path('products_delete', {'id': product.id }) }}" title="Delete product" ><button type="button" class="btn btn-danger btn-lg btn-block">DELETE PRODUCT</button></a>
+
+        </div>
+        <!-- /PANEL -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('assets/backend-client/plugins/nestable/jquery.nestable.js') }}"></script>
+
+    <script src="{{ asset('assets/backend-client/js/custom/ProductView.js') }}"></script>
+
+    <script src="{{ asset('assets/backend-client/js/custom/NewViewCatProd.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var $product = $('#product');
+
+            var newViewCatProd = new NewViewCatProd($product);
+            var productView = new ProductView($product);
+        });
+
+        $(window).scroll(function () {
+
+            if ($(window).scrollTop() > 150) {
+
+                $('#top-bar-action').addClass('navbar-fixed-top');
+            } else {
+
+                $('#top-bar-action').removeClass('navbar-fixed-top');
+            }
+        });
+
+        $(window).unload(function() {
+
+            localStorage.clear();
+        });
+
+        if(jQuery().nestable) {
+            // Nestable list 1
+            jQuery('#nestable').nestable({
+                group: 1,
+                maxDepth: 0
+            });
+        }
+
+        {% if product.relatedProductsWithProduct %}
+            localStorage.setItem("finalValue", [{{ relatedProductsStored|join(',') }}]);
+        {% else %}
+            localStorage.setItem("finalValue", '');
+        {% endif %}
+
+    </script>
+{% endblock %}

@@ -1,0 +1,265 @@
+{% extends 'base.html.twig' %}
+{% block metaKeywords %}{% endblock %}
+{% block metaDescription %}Basket - Here is the basket of Spill Kits Direct{% endblock %}
+{% block basket %}{% endblock %}
+{% block body %}
+    <div id="basket">
+        <section class="page-header page-header-xs">
+            <div class="container">
+
+                <h1>Your Basket</h1>
+
+                <!-- breadcrumbs -->
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('index') }}">Home</a></li>
+                    <li><a href="{{ path('basket') }}">Basket</a></li>
+                </ol><!-- /breadcrumbs -->
+
+            </div>
+        </section>
+        <!-- /PAGE HEADER -->
+
+        <!-- CART -->
+        <section>
+            <div class="container">
+
+                <ul class="process-steps nav nav-justified">
+                    <li class="active">
+                        <a href="{{ path('basket') }}"><i class="fa fa-shopping-cart"></i></a>
+                        <h5>Basket</h5>
+                    </li>
+                    <li {% if not app.session.get('basketProducts') %}class="disabled js-disabled"{% endif %}>
+                        <a href="{% if app.session.get('basketProducts') %}{{ path('checkout_invoice') }}#beginning{% else %}#{% endif %}"><i class="fa fa-file-text-o"></i></a>
+                        <h5>Invoice Details</h5>
+                    </li>
+                    <li {% if not app.session.get('invoiceDetails') %}class="disabled js-disabled"{% endif %}>
+                        <a href="{% if app.session.get('invoiceDetails') %}{{ path('checkout_delivery') }}#beginning{% else %}#{% endif %}"><i class="fa fa-envelope-o margin-left-minus-six"></i></a>
+                        <h5>Delivery Details</h5>
+                    </li>
+                    <li {% if not app.session.get('deliveryDetails') %}class="disabled js-disabled"{% endif %}>
+                        <a href="{% if app.session.get('deliveryDetails') %}{{ path('checkout_review') }}#beginning{% else %}#{% endif %}"><i class="icon-ok"></i></a>
+                        <h5>Review & Secure Payment</h5>
+                    </li>
+                </ul>
+
+                <hr>
+
+                {% if basketProducts %}
+                    <!-- CART -->
+                    <div class="row">
+
+                        <!-- LEFT -->
+                        <div class="col-lg-8 col-sm-7">
+
+                            <!-- CART -->
+                            <form class="cartContent clearfix" method="post" action="#">
+
+                                <!-- cart content -->
+                                <div id="cartContent">
+                                    <!-- cart header -->
+                                    <div class="item head clearfix">
+                                        <span class="cart_img"></span>
+                                        <span class="product_name size-13 bold">PRODUCT NAME</span>
+                                        <span class="remove_item size-13 bold"></span>
+                                        <span class="total_price size-13 bold">TOTAL</span>
+                                        <span class="qty size-13 bold">QUANTITY</span>
+                                    </div>
+                                    <!-- /cart header -->
+
+                                    {% for basketProduct in basketProducts %}
+                                        <!-- cart item -->
+                                        <div class="item">
+                                            <div class="cart_img pull-left width-100 padding-10 text-left"><img src="{{ asset('assets/images/products/' ~ basketProduct['imageName']) | imagine_filter('basket') }}" alt="" width="80" /></div>
+                                            <a href="{{ basketProduct['url'] }}.html" class="product_name">
+                                                <span>{{ basketProduct['name'] }}</span>
+                                            </a>
+                                            <a href="#" class="remove_item js-remove"
+                                               data-url="{{ path('basket_delete_single_product', {'id': basketProduct['id']}) }}"
+                                            ><i class="fa fa-times"></i></a>
+                                            <div class="total_price">£<span>{{ (basketProduct['price'] * basketProduct['quantity'])|number_format(2, '.', ',') }}</span></div>
+                                            <div class="qty js-qty"
+                                                data-url="{{ path('add_to_basket_in_basket', {'id': basketProduct['id']}) }}"
+                                            ><input type="number" title="qty" value="{{ basketProduct['quantity'] }}" name="qty" maxlength="3" max="999" min="1" /> &times; £{{ basketProduct['price']|number_format(2, '.', ',') }}</div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <!-- /cart item -->
+                                    {% endfor %}
+
+                                    <!-- update cart -->
+                                    <button class="btn btn-danger margin-top-20 margin-right-10 pull-right"><a href="{{ path('basket_empty') }}"><i class="glyphicon glyphicon-remove"></i> CLEAR CART</a></button>
+                                    <!-- /update cart -->
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!-- /cart content -->
+
+                            </form>
+                            <!-- /CART -->
+
+                        </div>
+
+
+                        <!-- RIGHT -->
+                        <div class="col-lg-4 col-sm-5">
+
+                            <!-- TOGGLE -->
+                            <div class="clearfix">
+
+                                <form action="#" method="get" class="nomargin">
+
+                                    <div class="form-group">
+                                        <label for="postcode" class="control-label required">Postcode (we only send to UK)</label>
+                                        <input type="text" name="postcode" id="postcode" required minlength="6" maxlength="8" class="form-control uppercase" value="">
+                                    </div>
+
+                                    <button class="btn btn-primary js-postcode pull-right"
+                                            data-url="{{ path('delivery_calculator') }}"
+                                            type="submit">Calculate delivery <span class="fa fa-truck" aria-hidden="true"></span></button>
+                                </form>
+
+                            </div>
+                            <!-- /TOGGLE -->
+
+                            <div class="toggle-transparent toggle-bordered-full clearfix">
+                                <div class="toggle active">
+                                    <div class="js-box-totals toggle-content">
+
+                                        <span class="clearfix">
+                                                <span class="pull-right">£{{ basketTotal|number_format(2, '.', ',') }}</span>
+                                                <strong class="pull-left">Subtotal:</strong>
+                                            </span>
+                                        <span class="clearfix">
+                                                <span class="pull-right">£{{ (basketTotal * 1.2 - basketTotal)|number_format(2, '.', ',') }}</span>
+                                                <span class="pull-left">VAT:</span>
+                                            </span>
+
+                                        <hr />
+
+                                        {% if delivery %}
+                                            <span class="clearfix">
+                                                <span class="pull-right">£{{ delivery|number_format(2, '.', ',') }}</span>
+                                                <strong class="pull-left">Delivery Subtotal:</strong>
+                                            </span>
+                                            <span class="clearfix">
+                                                    <span class="pull-right">£{{ (delivery * 1.2 - delivery)|number_format(2, '.', ',') }}</span>
+                                                    <span class="pull-left">Delivery VAT:</span>
+                                                </span>
+
+                                            <hr />
+                                        {% endif %}
+
+                                        <span class="clearfix">
+                                            {% if delivery %}
+                                                <span class="pull-right size-20">£{{ ((delivery + basketTotal) * 1.2)|number_format(2, '.', ',') }}</span>
+                                            {% else %}
+                                                <span class="pull-right size-20">£{{ (basketTotal * 1.2)|number_format(2, '.', ',') }}</span>
+                                            {% endif %}
+                                                <strong class="pull-left">TOTAL:</strong>
+                                            </span>
+
+                                    </div>
+
+                                    <hr />
+
+                                    <a href="{{ path('checkout_invoice') }}#beginning" class="btn btn-primary btn-lg btn-block size-15"><i class="fa fa-mail-forward"></i> CHECKOUT</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /CART -->
+                {% else %}
+                    <!-- EMPTY CART -->
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <strong>Shopping cart is empty!</strong><br />
+                            You have no items in your shopping cart.<br />
+                            Click <a href="{{ path('index') }}">here</a> to continue shopping. <br />
+                            <span class="label label-warning">this is just an empty cart example</span>
+                        </div>
+                    </div>
+                    <!-- /EMPTY CART -->
+                {% endif %}
+
+            </div>
+
+        </section>
+        <!-- /CART -->
+
+        {% for allRelatedProduct in allRelatedProducts if allRelatedProduct|length %}
+            <!-- RECOMMENDED -->
+            <section>
+                <div class="container">
+
+                    <h2 class="owl-featured"><strong>Recommended</strong> with <b>{{ allRelatedProduct.owner.name }}</b>:</h2>
+                    <div class="owl-carousel featured nomargin owl-padding-10" data-plugin-options='{"singleItem": false, "stopOnHover":false, "autoPlay":4000, "autoHeight": false, "navigation": true, "pagination": false}'>
+
+                        {% for relatedProduct in allRelatedProduct %}
+                            <!-- item -->
+                            <div class="shop-item nomargin">
+
+                                <div class="thumbnail">
+                                    <!-- product image(s) -->
+                                    <a class="shop-item-image" href="{{ path('product_only', {'product': relatedProduct.slug}) }}">
+                                        <img class="img-responsive" src="{{ asset('assets/images/products/' ~ relatedProduct.imageName) | imagine_filter('relatedProduct') }}" alt="{{ relatedProduct.name }}" />
+                                    </a>
+                                    <!-- /product image(s) -->
+                                </div>
+
+                                <div class="shop-item-summary text-center">
+                                    <h2>{{ relatedProduct.name }}</h2>
+
+                                    <!-- rating -->
+                                    <div class="shop-item-rating-line">
+                                        <div class="rating rating-5 size-13"><!-- rating-0 ... rating-5 --></div>
+                                    </div>
+                                    <!-- /rating -->
+
+                                    <!-- price -->
+                                    <div class="shop-item-price">
+                                        £{{ relatedProduct.price }}
+                                    </div>
+                                    <!-- /price -->
+                                </div>
+
+                                <!-- buttons -->
+                                <div class="shop-item-buttons text-center">
+                                    <a class="btn btn-default js-add-cart" href="#"
+                                       data-name="{{ relatedProduct.name }}"
+                                       data-url="{{ path('add_to_basket', {'id': relatedProduct.id}) }}"
+                                       data-basket="{{ path('basket') }}"
+                                    ><i class="fa fa-cart-plus"></i> Add to Basket</a>
+                                </div>
+                                <!-- /buttons -->
+                            </div>
+                            <!-- /item -->
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </section>
+            <!-- /RECOMMENDED -->
+        {% endfor %}
+
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/frontend-client/js/custom/BasketAdd.js') }}"></script>
+    <script src="{{ asset('assets/frontend-client/js/custom/Basket.js') }}"></script>
+    <script src="{{ asset('assets/frontend-client/js/custom/Delivery.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var $basket = $('#basket');
+
+            var basketAdd = new BasketAdd($basket);
+            var basket = new Basket($basket);
+            var delivery = new Delivery($basket);
+        });
+    </script>
+
+{% endblock %}

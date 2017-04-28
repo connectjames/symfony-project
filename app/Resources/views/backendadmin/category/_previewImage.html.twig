@@ -1,0 +1,6 @@
+{% if pathImagePreview is null %}
+{% else %}
+<p>
+    <img src="{{ asset(pathImagePreview) | imagine_filter('category') }}" height="300" width="300">
+</p>
+{% endif %}

@@ -1,0 +1,70 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="county")
+ */
+class County
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $name;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Delivery", inversedBy="counties")
+     * @ORM\JoinColumn(name="delivery_id", referencedColumnName="id")
+     */
+    private $delivery;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Set delivery
+     *
+     * @param \AppBundle\Entity\Delivery $delivery
+     *
+     * @return County
+     */
+    public function setDelivery(\AppBundle\Entity\Delivery $delivery = null)
+    {
+        $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * Get delivery
+     *
+     * @return \AppBundle\Entity\Delivery
+     */
+    public function getDelivery()
+    {
+        return $this->delivery;
+    }
+}

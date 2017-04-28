@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block basket %}{% endblock %}
+{% block sticky %}{% endblock %}
+{% block body %}
+    <div id="order-placed">
+        <section class="page-header page-header-xs">
+            <div class="container">
+
+                <h1>Order Placed</h1>
+
+                <!-- breadcrumbs -->
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('index') }}">Home</a></li>
+                    <li><a href="{{ path('checkout_order') }}">Order Placed</a></li>
+                </ol><!-- /breadcrumbs -->
+
+            </div>
+        </section>
+        <!-- /PAGE HEADER -->
+
+        <!-- CART -->
+        <section>
+            <div class="container">
+
+                <!-- CHECKOUT FINAL MESSAGE -->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>Thank you, {{ invoiceDetails['invoiceAddress']['firstName'] }} {{ invoiceDetails['invoiceAddress']['lastName'] }}.</h3>
+
+                        <p>
+                            Your order has been placed. In a few moments you will receive an order confirmation email from us.<br>
+                            You can also explore more of our <a href="{{ path('index') }}">products</a>.
+                        </p>
+
+                        <hr>
+
+                        <p>
+                            Thank you very much for choosing us,<br>
+                            <strong>Spill Kits Direct Team</strong>
+                        </p>
+                    </div>
+                </div>
+                <!-- /CHECKOUT FINAL MESSAGE -->
+
+            </div>
+        </section>
+        <!-- /CART -->
+    </div>
+{% endblock %}

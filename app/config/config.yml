@@ -1,0 +1,181 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+    sagepay_vendor: RAMDOM
+    sagepay_key: RAMDOM
+    sagepay_password: RAMDOM
+    product_images_directory: '%kernel.root_dir%/..//web/assets/images/products'
+    product_images_preview_directory: '%kernel.root_dir%/..//web/assets/images/products/tmp'
+    category_images_directory: '%kernel.root_dir%/..//web/assets/images/categories'
+    category_images_preview_directory: '%kernel.root_dir%/..//web/assets/images/categories/tmp'
+
+framework:
+    #esi:             ~
+    #translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    form_themes:
+      - bootstrap_3_layout.html.twig
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    port:      25
+    encryption: "tls"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+knp_paginator:
+    page_range:                 5          # default page range used in pagination control
+    default_options:
+        page_name:              page       # page query parameter name
+        sort_field_name:        sort       # sort field query parameter name
+        sort_direction_name:    direction  # sort direction query parameter name
+        sort_direction_name:    direction  # sort direction query parameter name
+        distinct:               true       # ensure distinct results, useful when ORM queries are using GROUP BY statements
+        filter_field_name:      search
+        filter_value_name:      searchValue
+    template:
+        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig     # sliding pagination controls template
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig                         # sort link template
+
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default:
+            sluggable: true
+
+liip_imagine:
+    filter_sets:
+
+        # name our filter set "thumbnail"
+        thumbnail:
+            quality : 100
+
+            filters:
+
+                thumbnail:
+
+                    size: [70, 70]
+
+                    mode: outbound
+        # name our filter set "basket"
+        basket:
+            quality : 100
+
+            filters:
+
+                thumbnail:
+
+                    size: [110, 110]
+
+                    mode: outbound
+        # name our filter set "featured"
+        featured:
+            quality : 100
+
+            filters:
+
+                thumbnail:
+
+                    size: [180, 180]
+
+                    mode: outbound
+        # name our filter set "relatedProduct"
+        relatedProduct:
+            quality : 100
+
+            filters:
+
+                thumbnail:
+
+                    size: [300, 300]
+
+                    mode: outbound
+        # name our filter set "product"
+        product:
+            quality : 100
+
+            filters:
+
+                # use and setup the "downscale" filter
+                downscale:
+
+                    # input 3000x3000px -> output 1000x1000px
+                    max: [1000, 1000]
+        # name our filter set "category"
+        category:
+            quality : 100
+
+            filters:
+
+                # use and setup the "downscale" filter
+                downscale:
+
+                    # input 3000x3000px -> output 1000x1000px
+                    max: [1000, 1000]
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+
+zenstruck_redirect:
+    redirect_class: AppBundle\Entity\Redirect
+
+zenstruck_redirect:
+    not_found_class: AppBundle\Entity\NotFound

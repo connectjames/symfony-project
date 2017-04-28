@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1fe80b11-4a6f-4452-a34f-675f315a28b0" name="Default" comment="" />
+    <ignored path="spill-kits-direct.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="spill-kits-direct">
+      <favorite_root url="file://$PROJECT_DIR$/app/Resources/views/backendadmin/newCategory.html.twig" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+    </favorites_list>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="OrderController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/OrderController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="455">
+              <caret line="289" column="26" selection-start-line="289" selection-start-column="26" selection-end-line="289" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SelectDropdown.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/assets/frontend-client/js/custom/SelectDropdown.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SecurityController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="571">
+              <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="62" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/Resources/views/backendadmin/category.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/index/index.html.twig" />
+        <option value="$PROJECT_DIR$/web/assets/frontend-client/css/essentials.css" />
+        <option value="$PROJECT_DIR$/web/assets/frontend-client/js/custom/Delivery.js" />
+        <option value="$PROJECT_DIR$/web/assets/backend-client/js/custom/NewViewCatProd.js" />
+        <option value="$PROJECT_DIR$/web/assets/frontend-client/js/custom/CheckoutDelivery.js" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/basket.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/CheckoutDeliveryForm.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/checkout/_enteredNewAddress.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/UserEditAddressInvoiceForm.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/checkout/_merchantSession.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/order-placed.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/checkout-invoice.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/checkout/_invoiceAddress.html.twig" />
+        <option value="$PROJECT_DIR$/web/assets/frontend-client/js/custom/Checkout.js" />
+        <option value="$PROJECT_DIR$/app/Resources/views/backendadmin/viewClient.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Order.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/backendadmin/viewOrder.html.twig" />
+        <option value="$PROJECT_DIR$/web/assets/backend-client/js/custom/ClientOrdView.js" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/checkout/_savedAddress.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/checkout-review.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/UserEditAddressDeliveryForm.php" />
+        <option value="$PROJECT_DIR$/web/assets/frontend-client/js/custom/Details.js" />
+        <option value="$PROJECT_DIR$/app/Resources/views/backendclient/delivery/_savedAddress.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/backendclient/printInvoice.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/ClientController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Product.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/CatalogueController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/backendadmin/viewProduct.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/backendadmin/newProduct.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/categorySub.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/productOnly.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/categorySubSub.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ProductController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/productWithCatSubSub.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/productWithCatSub.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/productWithCat.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Backendclient/DetailsController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/backendclient/details.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/security/newPassword.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" />
+        <option value="$PROJECT_DIR$/app/config/config_dev.yml" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/checkout-delivery.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/CheckoutController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/frontend/category.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/OrderController.php" />
+        <option value="$PROJECT_DIR$/web/assets/frontend-client/js/custom/SelectDropdown.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-small-ecom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-small-ecom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-small-ecom" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-small-ecom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-small-ecom" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="var" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-small-ecom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-small-ecom" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-small-ecom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-small-ecom" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-small-ecom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-small-ecom" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FullScreen" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/assets/frontend-client/js/custom" />
+      <recent name="$PROJECT_DIR$/src/AppBundle/Repository" />
+      <recent name="$PROJECT_DIR$/src/AppBundle" />
+      <recent name="$PROJECT_DIR$/src/AppBundle/Controller" />
+      <recent name="$PROJECT_DIR$/src/AppBundle/Controller/Frontend" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Resources/views/frontend" />
+      <recent name="$PROJECT_DIR$/app/Resources/views/backendclient" />
+      <recent name="$PROJECT_DIR$/web/assets/frontend-client/js/custom" />
+      <recent name="$PROJECT_DIR$/app/Resources/views/frontend/checkout" />
+      <recent name="$PROJECT_DIR$/src/AppBundle/Form" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHPUnit.Entity">
+    <configuration default="false" name="Entity" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner directory="$PROJECT_DIR$/src/AppBundle/Entity" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="PHPUnit.Entity" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.Entity" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1fe80b11-4a6f-4452-a34f-675f315a28b0" name="Default" comment="" />
+      <created>1479275407078</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1479275407078</updated>
+      <workItem from="1479275408503" duration="32000" />
+      <workItem from="1479275447748" duration="120000" />
+      <workItem from="1479275585758" duration="13000" />
+      <workItem from="1479275610387" duration="1204000" />
+      <workItem from="1479316773327" duration="1339000" />
+      <workItem from="1479318594023" duration="1372000" />
+      <workItem from="1479320500650" duration="1707000" />
+      <workItem from="1479322625823" duration="1340000" />
+      <workItem from="1479324762789" duration="1317000" />
+      <workItem from="1479359543588" duration="415000" />
+      <workItem from="1479363518358" duration="598000" />
+      <workItem from="1479406354492" duration="1595000" />
+      <workItem from="1479408178215" duration="1125000" />
+      <workItem from="1479410255841" duration="421000" />
+      <workItem from="1479417063009" duration="1477000" />
+      <workItem from="1479453381797" duration="178000" />
+      <workItem from="1479489412247" duration="764000" />
+      <workItem from="1479551910274" duration="1151000" />
+      <workItem from="1479576756159" duration="1837000" />
+      <workItem from="1479578669805" duration="1470000" />
+      <workItem from="1479580667397" duration="1172000" />
+      <workItem from="1479633648416" duration="1491000" />
+      <workItem from="1479636793670" duration="1228000" />
+      <workItem from="1479733394932" duration="1074000" />
+      <workItem from="1479747469370" duration="1487000" />
+      <workItem from="1479749222451" duration="1492000" />
+      <workItem from="1479751187168" duration="2531000" />
+      <workItem from="1479757881896" duration="1801000" />
+      <workItem from="1479759709146" duration="1900000" />
+      <workItem from="1479761731368" duration="457000" />
+      <workItem from="1479793350022" duration="1709000" />
+      <workItem from="1479879476154" duration="438000" />
+      <workItem from="1479886319937" duration="984000" />
+      <workItem from="1479898062514" duration="301000" />
+      <workItem from="1479900543432" duration="1392000" />
+      <workItem from="1479908226378" duration="1612000" />
+      <workItem from="1479910091053" duration="1361000" />
+      <workItem from="1479993074944" duration="2727000" />
+      <workItem from="1479995827504" duration="1961000" />
+      <workItem from="1480006539328" duration="1594000" />
+      <workItem from="1480008717052" duration="1556000" />
+      <workItem from="1480018485649" duration="106000" />
+      <workItem from="1480023622555" duration="1484000" />
+      <workItem from="1480053449731" duration="1901000" />
+      <workItem from="1480055721157" duration="411000" />
+      <workItem from="1480249077599" duration="670000" />
+      <workItem from="1480352088654" duration="863000" />
+      <workItem from="1480353260406" duration="266000" />
+      <workItem from="1480360938324" duration="1134000" />
+      <workItem from="1480362435952" duration="327000" />
+      <workItem from="1480362822042" duration="1059000" />
+      <workItem from="1480364728504" duration="1577000" />
+      <workItem from="1480366560577" duration="1568000" />
+      <workItem from="1480368426610" duration="945000" />
+      <workItem from="1480397225821" duration="1087000" />
+      <workItem from="1480399225317" duration="1438000" />
+      <workItem from="1480403267182" duration="981000" />
+      <workItem from="1480405406521" duration="907000" />
+      <workItem from="1480491398574" duration="185000" />
+      <workItem from="1480655764249" duration="954000" />
+      <workItem from="1480662494853" duration="1954000" />
+      <workItem from="1480664486754" duration="1837000" />
+      <workItem from="1480666347533" duration="391000" />
+      <workItem from="1480763045008" duration="1707000" />
+      <workItem from="1480766724844" duration="436000" />
+      <workItem from="1480769911481" duration="714000" />
+      <workItem from="1480771750196" duration="1479000" />
+      <workItem from="1480773574517" duration="1486000" />
+      <workItem from="1480776703106" duration="624000" />
+      <workItem from="1480778568311" duration="1775000" />
+      <workItem from="1480780419461" duration="1793000" />
+      <workItem from="1480782378096" duration="1452000" />
+      <workItem from="1480869567322" duration="397000" />
+      <workItem from="1481001721630" duration="1807000" />
+      <workItem from="1481003572881" duration="1746000" />
+      <workItem from="1481089068400" duration="1477000" />
+      <workItem from="1481095631102" duration="901000" />
+      <workItem from="1481097511087" duration="1330000" />
+      <workItem from="1481131822530" duration="1254000" />
+      <workItem from="1481133660373" duration="597000" />
+      <workItem from="1481136753960" duration="698000" />
+      <workItem from="1481138695240" duration="855000" />
+      <workItem from="1481141191750" duration="1789000" />
+      <workItem from="1481143004438" duration="1857000" />
+      <workItem from="1481144908205" duration="558000" />
+      <workItem from="1481151100437" duration="190000" />
+      <workItem from="1481184400209" duration="412000" />
+      <workItem from="1481185283843" duration="339000" />
+      <workItem from="1481187293706" duration="1144000" />
+      <workItem from="1481208254318" duration="1763000" />
+      <workItem from="1481210098608" duration="1003000" />
+      <workItem from="1481212152224" duration="1261000" />
+      <workItem from="1481225102716" duration="1037000" />
+      <workItem from="1481226920712" duration="333000" />
+      <workItem from="1481230412785" duration="890000" />
+      <workItem from="1481262081482" duration="1214000" />
+      <workItem from="1481263905535" duration="392000" />
+      <workItem from="1481366832721" duration="337000" />
+      <workItem from="1481369231635" duration="1534000" />
+      <workItem from="1481383702972" duration="1425000" />
+      <workItem from="1481385743190" duration="1931000" />
+      <workItem from="1481387696375" duration="1701000" />
+      <workItem from="1481389597292" duration="1632000" />
+      <workItem from="1481453741533" duration="1725000" />
+      <workItem from="1481455596015" duration="1767000" />
+      <workItem from="1481457454699" duration="93000" />
+      <workItem from="1481457560812" duration="1739000" />
+      <workItem from="1481459403825" duration="1482000" />
+      <workItem from="1481462131942" duration="1660000" />
+      <workItem from="1481463986424" duration="871000" />
+      <workItem from="1481465807783" duration="732000" />
+      <workItem from="1481519579133" duration="1288000" />
+      <workItem from="1481522054062" duration="1360000" />
+      <workItem from="1481523889844" duration="848000" />
+      <workItem from="1481606135483" duration="910000" />
+      <workItem from="1481608181692" duration="775000" />
+      <workItem from="1481627226834" duration="2694000" />
+      <workItem from="1481640412599" duration="188000" />
+      <workItem from="1481703361681" duration="222000" />
+      <workItem from="1481716291562" duration="258000" />
+      <workItem from="1481718362655" duration="253000" />
+      <workItem from="1481718632942" duration="549000" />
+      <workItem from="1481719335567" duration="503000" />
+      <workItem from="1481724068047" duration="622000" />
+      <workItem from="1481726919727" duration="1761000" />
+      <workItem from="1481728812650" duration="1960000" />
+      <workItem from="1481730990909" duration="1652000" />
+      <workItem from="1481732921651" duration="870000" />
+      <workItem from="1481742477859" duration="799000" />
+      <workItem from="1481752494853" duration="447000" />
+      <workItem from="1481779880898" duration="1304000" />
+      <workItem from="1481788764556" duration="1635000" />
+      <workItem from="1481790611466" duration="731000" />
+      <workItem from="1481865093801" duration="1599000" />
+      <workItem from="1481867056260" duration="962000" />
+      <workItem from="1481876112027" duration="218000" />
+      <workItem from="1482083131536" duration="2225000" />
+      <workItem from="1482124361296" duration="1277000" />
+      <workItem from="1482146876481" duration="1212000" />
+      <workItem from="1482210334743" duration="35279000" />
+      <workItem from="1482296836414" duration="14573000" />
+      <workItem from="1482382925766" duration="17580000" />
+      <workItem from="1483420895303" duration="19447000" />
+      <workItem from="1483525882760" duration="725000" />
+      <workItem from="1483568273147" duration="258000" />
+      <workItem from="1483592783197" duration="6365000" />
+      <workItem from="1483606355450" duration="4101000" />
+      <workItem from="1483682915668" duration="16069000" />
+      <workItem from="1483777201525" duration="173000" />
+      <workItem from="1483777446134" duration="8943000" />
+      <workItem from="1483790958795" duration="117000" />
+      <workItem from="1483793855387" duration="14503000" />
+      <workItem from="1483864839697" duration="22539000" />
+      <workItem from="1483900916236" duration="731000" />
+      <workItem from="1483946356674" duration="12538000" />
+      <workItem from="1484032065491" duration="5007000" />
+      <workItem from="1484048157454" duration="37313000" />
+      <workItem from="1484197767066" duration="5664000" />
+      <workItem from="1484213576076" duration="155000" />
+      <workItem from="1484226621617" duration="7240000" />
+      <workItem from="1484283983878" duration="13189000" />
+      <workItem from="1484386746555" duration="1759000" />
+      <workItem from="1484466959992" duration="35385000" />
+      <workItem from="1484716082548" duration="19492000" />
+      <workItem from="1484802555101" duration="4799000" />
+      <workItem from="1484812532098" duration="2067000" />
+      <workItem from="1484822953502" duration="336000" />
+      <workItem from="1484832539112" duration="8879000" />
+      <workItem from="1484889650216" duration="26904000" />
+      <workItem from="1484993524756" duration="32957000" />
+      <workItem from="1485148316297" duration="17440000" />
+      <workItem from="1485234575106" duration="10603000" />
+      <workItem from="1485268188802" duration="3713000" />
+      <workItem from="1485320833818" duration="5164000" />
+      <workItem from="1485407231769" duration="12491000" />
+      <workItem from="1485499043864" duration="1366000" />
+      <workItem from="1485517459484" duration="12248000" />
+      <workItem from="1485597521006" duration="10693000" />
+      <workItem from="1485711175549" duration="17000" />
+      <workItem from="1485899024917" duration="135000" />
+      <workItem from="1485925307921" duration="16861000" />
+      <workItem from="1486102141313" duration="28758000" />
+      <workItem from="1486201615177" duration="8633000" />
+      <workItem from="1486284797185" duration="9705000" />
+      <workItem from="1486443929792" duration="29396000" />
+      <workItem from="1486558723301" duration="8370000" />
+      <workItem from="1486569941678" duration="17105000" />
+      <workItem from="1486726152173" duration="201000" />
+      <workItem from="1486895846119" duration="6331000" />
+      <workItem from="1486962465647" duration="8793000" />
+      <workItem from="1486982663710" duration="3000" />
+      <workItem from="1486982679867" duration="1235000" />
+      <workItem from="1487048941277" duration="8680000" />
+      <workItem from="1487577042887" duration="201000" />
+      <workItem from="1487653049372" duration="471000" />
+      <workItem from="1488231524378" duration="1778000" />
+      <workItem from="1488258382917" duration="3046000" />
+      <workItem from="1488345022089" duration="10828000" />
+      <workItem from="1488431225099" duration="8798000" />
+      <workItem from="1488521233564" duration="14877000" />
+      <workItem from="1488628290296" duration="163000" />
+      <workItem from="1488709207585" duration="15511000" />
+      <workItem from="1488780359714" duration="13237000" />
+      <workItem from="1488863160713" duration="11639000" />
+      <workItem from="1488949607697" duration="228000" />
+      <workItem from="1489036525240" duration="1624000" />
+      <workItem from="1489471581659" duration="4151000" />
+      <workItem from="1489554379859" duration="9999000" />
+      <workItem from="1489644411577" duration="132000" />
+      <workItem from="1489674017103" duration="20996000" />
+      <workItem from="1489831307547" duration="4453000" />
+      <workItem from="1489986425760" duration="10193000" />
+      <workItem from="1490072860752" duration="10404000" />
+      <workItem from="1490336120092" duration="1296000" />
+      <workItem from="1490593221748" duration="2967000" />
+      <workItem from="1490646611595" duration="5101000" />
+      <workItem from="1490683523419" duration="1313000" />
+      <workItem from="1490704803092" duration="2526000" />
+      <workItem from="1490941329060" duration="4634000" />
+      <workItem from="1491192608552" duration="5192000" />
+      <workItem from="1491373893194" duration="4585000" />
+      <workItem from="1491458748657" duration="10149000" />
+      <workItem from="1491804320190" duration="17252000" />
+      <workItem from="1491827308654" duration="11098000" />
+      <workItem from="1491890610240" duration="37114000" />
+      <workItem from="1492019993471" duration="1805000" />
+      <workItem from="1492063379678" duration="21382000" />
+      <workItem from="1492157645959" duration="1713000" />
+      <workItem from="1492582233001" duration="1037000" />
+      <workItem from="1493273396469" duration="217000" />
+      <workItem from="1493366788448" duration="1420000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1023335000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24027778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32802126" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270809" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/ClientController.php</url>
+          <line>183</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/ClientController.php</url>
+          <line>245</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/ClientController.php</url>
+          <line>246</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/ClientController.php</url>
+          <line>217</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="46" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/UserEditAddressInvoiceForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="801">
+          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/frontend/order-placed.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/IndexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/backendadmin/order.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="204" column="45" selection-start-line="201" selection-start-column="55" selection-end-line="204" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="225" column="55" selection-start-line="225" selection-start-column="55" selection-end-line="225" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/backendadmin/viewClient.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1905">
+          <caret line="215" column="258" selection-start-line="215" selection-start-column="258" selection-end-line="215" selection-end-column="258" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/backend-client/js/custom/Order.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/backendadmin/viewOrder.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="308" column="156" selection-start-line="308" selection-start-column="156" selection-end-line="308" selection-end-column="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="215" column="38" selection-start-line="215" selection-start-column="20" selection-end-line="215" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/frontend/checkout/_savedAddress.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="38" column="253" selection-start-line="38" selection-start-column="253" selection-end-line="38" selection-end-column="253" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/frontend-client/js/custom/Checkout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/UserEditAddressDeliveryForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/frontend/basket.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="201" column="69" selection-start-line="201" selection-start-column="69" selection-end-line="201" selection-end-column="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/DeliveryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="157" column="8" selection-start-line="157" selection-start-column="8" selection-end-line="157" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/backend-client/js/custom/Client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/backend-client/js/custom/Product.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="57" column="12" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/backend-client/js/custom/ClientOrdView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="106" column="58" selection-start-line="106" selection-start-column="58" selection-end-line="106" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/frontend-client/js/custom/Details.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/backendclient/delivery/_savedAddress.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="89" column="8" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/backendadmin/printInvoicesOrders.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1155">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/ClientController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="122" column="37" selection-start-line="122" selection-start-column="37" selection-end-line="122" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/backendclient/printInvoice.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1896">
+          <caret line="272" column="14" selection-start-line="272" selection-start-column="14" selection-end-line="272" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/backendadmin/newProduct.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="757">
+          <caret line="186" column="26" selection-start-line="186" selection-start-column="26" selection-end-line="186" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/backendadmin/viewProduct.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="176" column="30" selection-start-line="158" selection-start-column="16" selection-end-line="176" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/CatalogueController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="406" column="80" selection-start-line="406" selection-start-column="63" selection-end-line="406" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="398" column="39" selection-start-line="398" selection-start-column="22" selection-end-line="398" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/frontend/categorySub.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
+          <caret line="95" column="117" selection-start-line="95" selection-start-column="117" selection-end-line="95" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/frontend/categorySubSub.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="99" column="70" selection-start-line="99" selection-start-column="70" selection-end-line="99" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProductController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="18" column="78" selection-start-line="18" selection-start-column="78" selection-end-line="18" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/frontend/productOnly.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="240" column="26" selection-start-line="204" selection-start-column="20" selection-end-line="240" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/frontend/productWithCatSubSub.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="757">
+          <caret line="248" column="26" selection-start-line="248" selection-start-column="26" selection-end-line="248" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/frontend/productWithCatSub.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="247" column="26" selection-start-line="247" selection-start-column="26" selection-end-line="247" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/frontend/productWithCat.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3690">
+          <caret line="246" column="26" selection-start-line="246" selection-start-column="26" selection-end-line="246" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Security/LoginFormAuthenticator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/security/newPassword.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/index/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/IndexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="31" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/UserForgotPassword.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Backendclient/DetailsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="74" column="84" selection-start-line="74" selection-start-column="84" selection-end-line="74" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config_dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="71" column="12" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/backendclient/details.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2295">
+          <caret line="153" column="40" selection-start-line="153" selection-start-column="40" selection-end-line="153" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/frontend/checkout-review.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2730">
+          <caret line="182" column="69" selection-start-line="182" selection-start-column="69" selection-end-line="182" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/frontend/checkout-delivery.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1455">
+          <caret line="97" column="53" selection-start-line="97" selection-start-column="53" selection-end-line="97" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CheckoutController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/frontend/category.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="62" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Backendadmin/OrderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="289" column="26" selection-start-line="289" selection-start-column="26" selection-end-line="289" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/frontend-client/js/custom/SelectDropdown.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

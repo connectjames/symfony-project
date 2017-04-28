@@ -1,0 +1,193 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
+ * @ORM\Table(name="category")
+ */
+class Category
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $metaTitle;
+
+    /**
+     * @ORM\Column(type="string", length=160, nullable=true)
+     */
+    private $metaDescription;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $metaKeywords;
+
+    /**
+     * @ORM\Column(type="string", unique=true)
+     * @Gedmo\Slug(fields={"name"})
+     */
+    private $slug;
+
+    /**
+     * @ORM\Column(type="integer", options={"default":1})
+     */
+    private $display;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $ImageName;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Product", inversedBy="categories")
+     * @ORM\JoinTable(name="category_product")
+     */
+    private $categoryProducts;
+
+    public function __construct()
+    {
+        $this->categoryProducts = new ArrayCollection();
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function getMetaTitle()
+    {
+        return $this->metaTitle;
+    }
+
+    public function setMetaTitle($metaTitle)
+    {
+        $this->metaTitle = $metaTitle;
+    }
+
+    public function setMetaDescription($metaDescription)
+    {
+        $this->metaDescription = $metaDescription;
+
+        return $this;
+    }
+
+    public function getMetaDescription()
+    {
+        return $this->metaDescription;
+    }
+
+    public function setMetaKeywords($metaKeywords)
+    {
+        $this->metaKeywords = $metaKeywords;
+
+        return $this;
+    }
+
+    public function getMetaKeywords()
+    {
+        return $this->metaKeywords;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    public function getDisplay()
+    {
+        return $this->display;
+    }
+
+    public function setDisplay($display)
+    {
+        $this->display = $display;
+    }
+
+    public function getImageName()
+    {
+        return $this->ImageName;
+    }
+
+    public function setImageName($ImageName)
+    {
+        $this->ImageName = $ImageName;
+    }
+
+    /**
+     * @return ArrayCollection|Product[]
+     */
+    public function getCategoryProducts()
+    {
+        return $this->categoryProducts;
+    }
+
+    public function addCategoryProduct(Product $product)
+    {
+        if ($this->categoryProducts->contains($product)) {
+            return;
+        }
+
+        $this->categoryProducts[] = $product;
+    }
+
+    public function removeCategoryProduct(Product $product)
+    {
+        if ($this->categoryProducts->contains($product)) {
+            $this->categoryProducts->removeElement($product);
+        }
+
+        return;
+    }
+}

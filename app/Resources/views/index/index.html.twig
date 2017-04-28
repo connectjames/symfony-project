@@ -1,0 +1,201 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('assets/backend-client/plugins/jquery-confirm/jquery-confirm.min.css') }}" rel="stylesheet" type="text/css"
+          xmlns="http://www.w3.org/1999/html"/>
+{% endblock %}
+{% block body %}
+    <div id="index">
+        <!-- FEATURED GRID -->
+        <section class="featured-grid">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <img src="{{ asset('assets/frontend-client/images/demo/shop/home/grid1.jpg') }}" alt="">
+                        <div class="ribbon hidden-xs">
+                            <div class="absolute">
+                                <h2>87%</h2>
+                                <h4>OFF</h4>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-right text-right">
+                            <h1 class="text-white">
+                                <em>HUGE</em>
+                                <em class="weight-300 text-white">DISCOUNTS</em>
+                            </h1>
+                            <a class="btn btn-primary btn-xs margin-top-10" href="#">Explore Now »</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="relative">
+                            <img src="{{ asset('assets/frontend-client/images/demo/shop/home/man_cat.jpg') }}" alt="">
+                            <div class="absolute text-left">
+                                <h2>Men</h2>
+                                <p>
+                                    YOU DON'T WANT TO MISS!
+                                </p>
+
+                                <p class="font-lato margin-top-30 size-16 hidden-sm hidden-xs">Donec tellus massa, tristique
+                                    sit amet condim vel,<br> facilisis quis sapien. Praesent id enim sit amet.</p>
+                                <a class="btn btn-primary margin-top-20" href="#">Shop Now »</a>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <img src="{{ asset('assets/frontend-client/images/demo/shop/home/woman_cat.jpg') }}" alt="">
+                            <div class="absolute text-right">
+                                <h2>Women</h2>
+                                <p>
+                                    YOU DON'T WANT TO MISS!
+                                </p>
+
+                                <p class="font-lato margin-top-30 size-16 hidden-sm hidden-xs">Donec tellus massa, tristique
+                                    sit amet condim vel,<br> facilisis quis sapien. Praesent id enim sit amet.</p>
+                                <a class="btn btn-primary margin-top-20" href="#">Shop Now »</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- /FEATURED GRID -->
+
+        <!-- INFO BAR -->
+        <section class="info-bar info-bar-clean">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-sm-3">
+                        <i class="glyphicon glyphicon-globe"></i>
+                        <h3>FREE SHIPPING &amp; RETURN</h3>
+                        <p>Free shipping on all orders over $99.</p>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <i class="glyphicon glyphicon-usd"></i>
+                        <h3>MONEY BACK GUARANTEE</h3>
+                        <p>100% money back guarantee.</p>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <i class="glyphicon glyphicon-flag"></i>
+                        <h3>ONLINE SUPPORT 24/7</h3>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <i class="glyphicon glyphicon-heart"></i>
+                        <h3><span class="countTo">9845</span> HAPPY CUSTOMERS</h3>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- /INFO BAR -->
+
+        <!-- NEW FEATURED -->
+        <section>
+            <div class="container">
+
+                <div class="heading-title heading-dotted">
+                    <h2 class="size-20">FEATURED PRODUCTS</h2>
+                </div>
+
+                <ul class="shop-item-list row list-inline nomargin">
+
+                    <!-- ITEM -->
+                    {% for featuredProduct in featuredProducts %}
+                        <li class="col-lg-2 col-sm-4">
+
+                            <div class="shop-item">
+                                <div class="thumbnail noborder nopadding">
+                                    <!-- product image(s) -->
+                                    <a class="shop-item-image" href="{{ featuredProduct.slug }}.html">
+                                        <img class="img-responsive" src="{{ asset('assets/images/products/' ~ featuredProduct.imageName) | imagine_filter('featured') }}" alt="" />
+                                    </a>
+                                    <!-- /product image(s) -->
+
+                                    <!-- hover buttons -->
+                                    <div class="shop-option-over">
+                                        <a class="btn btn-primary js-add-cart" href="#"
+                                            data-name="{{ featuredProduct.name }}"
+                                            data-url="{{ path('add_to_basket', {'id': featuredProduct.id}) }}"
+                                            data-basket="{{ path('basket') }}"
+                                        ><i class="fa fa-cart-plus size-18"></i></a>
+                                    </div>
+                                    <!-- /hover buttons -->
+
+                                </div>
+
+                                <div class="shop-item-summary text-center">
+                                    <h2 class="size-14">{{ featuredProduct.name }}</h2>
+
+                                    <!-- rating -->
+                                    <div class="shop-item-rating-line">
+                                        <div class="rating rating-5 size-11"></div>
+                                    </div>
+                                    <!-- /rating -->
+
+                                    <!-- price -->
+                                    <div class="shop-item-price">
+                                        £{{ featuredProduct.price }}
+                                    </div>
+                                    <!-- /price -->
+                                </div>
+
+                            </div>
+
+                        </li>
+                    {% endfor %}
+                    <!-- /ITEM -->
+
+                </ul>
+
+            </div>
+        </section>
+        <!-- FEATURED PRODUCTS -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/backend-client/plugins/jquery-confirm/jquery-confirm.min.js') }}"></script>
+
+    <script src="{{ asset('assets/frontend-client/js/custom/BasketAdd.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var $index = $('#index');
+
+            var index = new BasketAdd($index);
+        });
+    </script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@id": "{{ path('index') }}",
+              "name": "Index",
+              "image": "{{ asset('') }}"
+            }
+          }]
+        }
+    </script>
+
+
+
+{% endblock %}

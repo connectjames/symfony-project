@@ -1,0 +1,354 @@
+{% extends 'base.html.twig' %}
+{% block metaKeywords %}{{ product.metaKeywords }}{% endblock %}
+{% block metaDescription %}{{ product.metaDescription }}{% endblock %}
+{% block canonical %}{{ absolute_url(path('product_only', {'product': product.slug})) }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('assets/backend-client/plugins/jquery-confirm/jquery-confirm.min.css') }}" rel="stylesheet" type="text/css"
+          xmlns="http://www.w3.org/1999/html"/>
+{% endblock %}
+{% block body %}
+    <div id="productOnly">
+        <section class="page-header page-header-xs">
+            <div class="container">
+
+                <h1>{{ product.name }}</h1>
+
+                <!-- breadcrumbs -->
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('index') }}">Home</a></li>
+                    <li class="active"><a href="{{ path('product_only', {'product': product.slug}) }}">{{ product.name }}</a></li>
+                </ol><!-- /breadcrumbs -->
+
+            </div>
+        </section>
+        <!-- /PAGE HEADER -->
+
+        <!-- -->
+        <section>
+            <div class="container">
+
+                <div class="row">
+
+                    <!-- IMAGE -->
+                    <div class="col-lg-4 col-sm-4">
+
+                        <div class="thumbnail relative margin-bottom-3">
+
+                            <!--
+                                IMAGE ZOOM
+
+                                data-mode="mouseover|grab|click|toggle"
+                            -->
+                            <figure id="zoom-primary" class="zoom" data-mode="mouseover">
+                                <!--
+                                    zoom buttton
+
+                                    positions available:
+                                        .bottom-right
+                                        .bottom-left
+                                        .top-right
+                                        .top-left
+                                -->
+                                <a class="lightbox bottom-right" href="{{ asset('assets/images/products/' ~ product.imageName) | imagine_filter('product') }}" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
+
+                                <!--
+                                    image
+
+                                    Extra: add .image-bw class to force black and white!
+                                -->
+                                <img class="img-responsive" src="{{ asset('assets/images/products/' ~ product.imageName) | imagine_filter('product') }}" alt="{{ product.name }}" />
+                            </figure>
+
+                        </div>
+
+                        <!-- Thumbnails (required height:100px) -->
+                        <div data-for="zoom-primary" class="zoom-more owl-carousel owl-padding-3 featured" data-plugin-options='{"singleItem": false, "autoPlay": false, "navigation": true, "pagination": false}'>
+                            <a class="thumbnail active" href="{{ asset('assets/images/products/' ~ product.imageName) | imagine_filter('product') }}">
+                                <img src="{{ asset('assets/images/products/' ~ product.imageName) | imagine_filter('basket') }}" height="100" alt="" />
+                            </a>
+                        </div>
+                        <!-- /Thumbnails -->
+
+                    </div>
+                    <!-- /IMAGE -->
+
+                    <!-- ITEM DESC -->
+                    <div class="col-lg-5 col-sm-8">
+
+                        <!-- buttons -->
+                        {#<div class="pull-right">#}
+                            {#<!-- replace data-item-id width the real item ID - used by js/view/demo.shop.js -->#}
+                            {#<a class="btn btn-default add-wishlist" href="#" data-item-id="1" data-toggle="tooltip" title="Add To Wishlist"><i class="fa fa-heart nopadding"></i></a>#}
+                            {#<a class="btn btn-default add-compare" href="#" data-item-id="1" data-toggle="tooltip" title="Add To Compare"><i class="fa fa-bar-chart-o nopadding" data-toggle="tooltip"></i></a>#}
+                        {#</div>#}
+                        <!-- /buttons -->
+
+                        <!-- price -->
+                        <div class="shop-item-price">
+                            £{{ product.price|number_format(2, '.', ',') }}
+                        </div>
+                        <!-- /price -->
+
+                        <hr />
+
+                        <div class="clearfix margin-bottom-30">
+                            <span class="pull-right text-success"><i class="fa fa-check"></i> In Stock</span>
+                            <!--
+                            <span class="pull-right text-danger"><i class="glyphicon glyphicon-remove"></i> Out of Stock</span>
+                            -->
+
+                            <strong>SKU:</strong> {{ product.sku }}
+                        </div>
+
+
+                        <!-- short description -->
+                        <p>{{ product.shortDescription|raw }}</p>
+                        <!-- /short description -->
+
+
+                        {#<!-- countdown -->#}
+                        {#<div class="text-center">#}
+                            {#<h5>Limited Offer</h5>#}
+                            {#<div class="countdown" data-from="January 31, 2018 15:03:26" data-labels="years,months,weeks,days,hour,min,sec"><!-- Example Date From: December 31, 2018 15:03:26 --></div>#}
+                        {#</div>#}
+                        {#<!-- /countdown -->#}
+
+
+                        <hr />
+
+                        <div class="clearfix form-inline nomargin">
+                            <div class="btn-group pull-left product-opt-qty">
+                                <input type="number" title="quantity" value="1" min="0" max="1000" class="form-control stepper">
+                            </div><!-- /btn-group -->
+                            <a class="js-add-cart" href="#"
+                               data-name="{{ product.name }}"
+                               data-url="{{ path('add_to_basket', {'id': product.id}) }}"
+                               data-basket="{{ path('basket') }}"
+                            >
+                                <button class="btn btn-primary pull-left product-add-cart noradius">ADD TO BASKET</button>
+                            </a>
+                        </div>
+
+                        <hr />
+
+                        <!-- Share -->
+                        <div class="pull-right">
+
+                            <a href="#" class="social-icon social-icon-sm social-icon-transparent social-facebook pull-left" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                <i class="icon-facebook"></i>
+                                <i class="icon-facebook"></i>
+                            </a>
+
+                            <a href="#" class="social-icon social-icon-sm social-icon-transparent social-twitter pull-left" data-toggle="tooltip" data-placement="top" title="Twitter">
+                                <i class="icon-twitter"></i>
+                                <i class="icon-twitter"></i>
+                            </a>
+
+                            <a href="#" class="social-icon social-icon-sm social-icon-transparent social-gplus pull-left" data-toggle="tooltip" data-placement="top" title="Google plus">
+                                <i class="icon-gplus"></i>
+                                <i class="icon-gplus"></i>
+                            </a>
+
+                            <a href="#" class="social-icon social-icon-sm social-icon-transparent social-linkedin pull-left" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                                <i class="icon-linkedin"></i>
+                                <i class="icon-linkedin"></i>
+                            </a>
+
+                        </div>
+                        <!-- /Share -->
+
+                    </div>
+                    <!-- /ITEM DESC -->
+
+                    <!-- INFO -->
+                    <div class="col-sm-4 col-md-3">
+
+                        <h4 class="size-18">
+                            <i class="fa fa-paper-plane-o"></i>
+                            FREE SHIPPING
+                        </h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla.</p>
+
+                        <h4 class="size-18">
+                            <i class="fa fa-clock-o"></i>
+                            30 DAYS MONEY BACK
+                        </h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla.</p>
+
+                        <h4 class="size-18">
+                            <i class="fa fa-users"></i>
+                            CUSTOMER SUPPORT
+                        </h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla.</p>
+
+                        <hr>
+
+                        <p class="size-11">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque.
+                        </p>
+                    </div>
+                    <!-- /INFO -->
+
+                </div>
+
+
+
+                <ul id="myTab" class="nav nav-tabs nav-top-border margin-top-80" role="tablist">
+                    <li role="presentation" class="active"><a href="#description" role="tab" data-toggle="tab">Description</a></li>
+                    <li role="presentation"><a href="#specs" role="tab" data-toggle="tab">Specifications</a></li>
+                </ul>
+
+
+                <div class="tab-content padding-top-20">
+
+                    <!-- DESCRIPTION -->
+                    <div role="tabpanel" class="tab-pane fade in active" id="description">{{ product.description|raw }}</div>
+
+                    <!-- SPECIFICATIONS -->
+                    <div role="tabpanel" class="tab-pane fade" id="specs">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tbody>
+                                <tr>
+                                    <th>Capacity</th>
+                                    <td>{{ product.capacityTable ? product.capacityTable : 'N/A' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Contents</th>
+                                    <td>{{ product.contentsTable ? product.contentsTable : 'N/A' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Product Code</th>
+                                    <td>{{ product.productCodeTable ? product.productCodeTable : 'N/A' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight</th>
+                                    <td>{{ product.weightTable ? product.weightTable : 'N/A' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dimension</th>
+                                    <td>{{ product.dimensionTable ? product.dimensionTable : 'N/A' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{{ product.descriptionTable ? product.descriptionTable : 'N/A' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Pack quantity</th>
+                                    <td>{{ product.packQuantityTable ? product.packQuantityTable : 'N/A' }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                {% if relatedProducts|length %}
+                    <hr class="margin-top-80 margin-bottom-80" />
+
+                    <!-- RELATED -->
+                    <h2 class="owl-featured"><strong>Related</strong> products:</h2>
+                    <div class="owl-carousel featured nomargin owl-padding-10" data-plugin-options='{"singleItem": false, "items": "5", "stopOnHover":false, "autoPlay":4500, "autoHeight": false, "navigation": true, "pagination": false}'>
+
+                        <!-- item -->
+                        {% for relatedProduct in relatedProducts %}
+                            {% if relatedProduct %}<!-- some product may have been deleted but will still remain as related as no Cascade delete -->
+                                <div class="shop-item nomargin">
+
+                                    <div class="thumbnail">
+                                        <!-- product image(s) -->
+                                        <a class="shop-item-image" href="{{ path('product_only', {'product': relatedProduct.slug}) }}">
+                                            <img class="img-responsive" src="{{ asset('assets/images/products/' ~ relatedProduct.imageName) | imagine_filter('relatedProduct') }}" alt="{{ relatedProduct.name }}" />
+                                        </a>
+                                        <!-- /product image(s) -->
+                                    </div>
+
+                                    <div class="shop-item-summary text-center">
+                                        <h2>{{ relatedProduct.name }}</h2>
+
+                                        <!-- rating -->
+                                        <div class="shop-item-rating-line">
+                                            <div class="rating rating-4 size-13"><!-- rating-0 ... rating-5 --></div>
+                                        </div>
+                                        <!-- /rating -->
+
+                                        <!-- price -->
+                                        <div class="shop-item-price">
+                                            £{{ relatedProduct.price|number_format(2, '.', ',') }}
+                                        </div>
+                                        <!-- /price -->
+                                    </div>
+
+                                    <!-- buttons -->
+                                    <div class="shop-item-buttons text-center">
+                                        <a class="btn btn-default js-add-cart" href="#"
+                                           data-name="{{ relatedProduct.name }}"
+                                           data-url="{{ path('add_to_basket', {'id': relatedProduct.id}) }}"
+                                           data-basket="{{ path('basket') }}"
+                                        ><i class="fa fa-cart-plus"></i> Add to Basket</a>
+                                    </div>
+                                    <!-- /buttons -->
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <!-- /item -->
+
+                    </div>
+                    <!-- /RELATED -->
+                {% endif %}
+
+            </div>
+        </section>
+        <!-- / -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/backend-client/plugins/jquery-confirm/jquery-confirm.min.js') }}"></script>
+
+    <script src="{{ asset('assets/frontend-client/js/custom/BasketAdd.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var $productOnly = $('#productOnly');
+
+            var productOnly = new BasketAdd($productOnly);
+        });
+    </script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@id": "{{ path('product_only', {'product': product.slug}) }}",
+              "name": "{{ product.name }}",
+              "image": "{{ asset('assets/images/products/' ~ product.imageName) }}"
+            }
+          }]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org/",
+          "@type": "Product",
+          "name": "{{ product.name }}",
+          "image": "{{ asset('assets/images/products/' ~ product.imageName) }}",
+          "description": "{{ product.description }}",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "GBP",
+            "price": "{{ product.price|number_format(2, '.', ',') }}",
+            "itemCondition": "http://schema.org/NewCondition",
+            "availability": "http://schema.org/InStock"
+          }
+        }
+    </script>
+
+{% endblock %}

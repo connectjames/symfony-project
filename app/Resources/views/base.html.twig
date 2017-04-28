@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>Spill Kits Direct - Oil Polution Environmental Control</title>
+    <meta name="keywords" content="{% block metaKeywords %}opec, oil polution environmental control, oil polution, environmental control{% endblock %}" />
+    <meta name="description" content="{% block metaDescription %}Together our portfolio of products and services enable pollution to be tackled from the smallest to the largest environmental hazard.{% endblock %}" />
+    <meta name="Author" content="James Davison [www.connectjames.com]" />
+    <meta name="robots" content="index, follow"/>
+    <link rel="canonical" href="{% block canonical %}{% endblock %}"/>
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+    {#{% stylesheets filter="scssphp" output="css/app.css"#}
+    {#"assets/frontend-client/plugins/bootstrap/css/bootstrap.min.css"#}
+    {#"assets/frontend-client/plugins/slider.revolution/css/extralayers.css"#}
+    {#"assets/frontend-client/plugins/slider.revolution/css/settings.css"#}
+    {#"assets/frontend-client/css/essentials.css"#}
+    {#"assets/frontend-client/css/essentials.css"#}
+    {#"assets/frontend-client/css/essentials.css"#}
+    {#"assets/frontend-client/css/essentials.css"#}
+    {#"assets/frontend-client/css/essentials.css"#}
+    {#%}#}
+    {#<link rel="stylesheet" href="{{ asset_url }}" />#}
+    {#{% endstylesheets %}#}
+
+    {% block stylesheets %}
+        {% stylesheets filter='cssrewrite' output="css/app.css"
+        "assets/frontend-client/plugins/bootstrap/css/bootstrap.min.css"
+        "assets/frontend-client/plugins/slider.revolution/css/extralayers.css"
+        "assets/frontend-client/plugins/slider.revolution/css/settings.css"
+        "assets/frontend-client/css/essentials.css"
+        "assets/frontend-client/css/layout.css"
+        "assets/frontend-client/css/layout-shop.css"
+        "assets/frontend-client/css/header-1.css"
+        "assets/frontend-client/css/color_scheme/yellow.css"
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+        {% endstylesheets %}
+    {% endblock %}
+
+    {#{% block stylesheets %}#}
+
+        {#<!-- WEB FONTS : use %7C instead of | (pipe) -->#}
+        {#<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />#}
+
+        {#<!-- CORE CSS -->#}
+        {#<link href="{{ asset('assets/frontend-client/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />#}
+
+        {#<!-- REVOLUTION SLIDER -->#}
+        {#<link href="{{ asset('assets/frontend-client/plugins/slider.revolution/css/extralayers.css') }}" rel="stylesheet" type="text/css" />#}
+        {#<link href="{{ asset('assets/frontend-client/plugins/slider.revolution/css/settings.css') }}" rel="stylesheet" type="text/css" />#}
+
+        {#<!-- THEME CSS -->#}
+        {#<link href="{{ asset('assets/frontend-client/css/essentials.css') }}" rel="stylesheet" type="text/css" />#}
+        {#<link href="{{ asset('assets/frontend-client/css/layout.css') }}" rel="stylesheet" type="text/css" />#}
+
+        {#<!-- PAGE LEVEL SCRIPTS -->#}
+        {#<link href="{{ asset('assets/frontend-client/css/layout-shop.css') }}" rel="stylesheet" type="text/css" />#}
+        {#<link href="{{ asset('assets/frontend-client/css/header-1.css') }}" rel="stylesheet" type="text/css" />#}
+        {#<link href="{{ asset('assets/frontend-client/css/color_scheme/yellow.css') }}" rel="stylesheet" type="text/css" id="color_scheme" />#}
+    {#{% endblock %}#}
+
+</head>
+
+<!--
+    AVAILABLE BODY CLASSES:
+
+    smoothscroll 			= create a browser smooth scroll
+    enable-animation		= enable WOW animations
+
+    bg-grey					= grey background
+    grain-grey				= grey grain background
+    grain-blue				= blue grain background
+    grain-green				= green grain background
+    grain-blue				= blue grain background
+    grain-orange			= orange grain background
+    grain-yellow			= yellow grain background
+
+    boxed 					= boxed layout
+    pattern1 ... patern11	= pattern background
+    menu-vertical-hide		= hidden, open on click
+
+    BACKGROUND IMAGE [together with .boxed class]
+    data-background="assets/images/boxed_background/1.jpg"
+-->
+<body class="smoothscroll enable-animation">
+    <div id="top-bar-scroll">
+        <ul class="nav nav-tabs nav-justified size-19">
+            <li><a role="tab" href="http://jamesdavison.io/opec" style="color: #179BD7;background: #f7f7f7;box-shadow: inset -10px -10px 20px -10px rgba(0,0,0,.75)">Information on OPEC</a></li>
+            <li class="active"><a role="tab" href="#">Shop on SPILL KITS DIRECT</a></li>
+        </ul>
+        <p></p>
+    </div>
+
+    <!-- wrapper -->
+    <div id="wrapper">
+
+        <!-- Top Bar -->
+        <div id="topBar">
+            <div class="container">
+
+                <!-- right -->
+                <ul class="top-links list-inline pull-right">
+                    <li class="text-welcome hidden-xs">Welcome to Spill Kits Direct<strong>
+                            {% if app.user %}
+                                , Hello {{ app.user.firstName }}!
+                            {% endif %}
+                        </strong></li>
+                    {% if app.user %}
+                        <li>
+                            <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-user hidden-xs"></i> MY ACCOUNT</a>
+                            <ul class="dropdown-menu pull-right">
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li><a tabindex="-1" href="{{ path('index_admin') }}" ><i class="fa fa-user"></i> ADMIN PANEL</a></li>
+                                {% endif %}
+                                <li class="divider"></li>
+                                <li><a tabindex="-1" href="{{ path('my-account_details') }}"><i class="fa fa-edit"></i> MY ACCOUNT</a></li>
+                                <li class="divider"></li>
+                                <li><a tabindex="-1" href="{{ path('security_logout') }}"><i class="glyphicon glyphicon-off"></i> LOGOUT</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="hidden-xs"><a href="{{ path('security_login') }}">LOGIN / REGISTER</a></li>
+                    {% endif %}
+                </ul>
+
+                <!-- left -->
+                <ul class="top-links list-inline">
+                    <li>
+                        <a href="mailto:info@opec.co.uk" class="size-18"><i class="fa fa-envelope-square" aria-hidden="true"></i> <span>info@opec.co.uk</span></a>
+                    </li>
+                    <li><span>|</span></li>
+                    <li>
+                        <a href="tel:00441924442701" class="size-18"><i class="fa fa-phone-square" aria-hidden="true"></i> <span>+44 (0) 1924 442 701</span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- /Top Bar -->
+
+        <!--
+            AVAILABLE HEADER CLASSES
+
+            Default nav height: 96px
+            .header-md 		= 70px nav height
+            .header-sm 		= 60px nav height
+
+            .noborder 		= remove bottom border (only with transparent use)
+            .transparent	= transparent header
+            .translucent	= translucent header
+            .sticky			= sticky header
+            .static			= static header
+            .dark			= dark header
+            .bottom			= header on bottom
+
+            shadow-before-1 = shadow 1 header top
+            shadow-after-1 	= shadow 1 header bottom
+            shadow-before-2 = shadow 2 header top
+            shadow-after-2 	= shadow 2 header bottom
+            shadow-before-3 = shadow 3 header top
+            shadow-after-3 	= shadow 3 header bottom
+
+            .clearfix		= required for mobile menu, do not remove!
+
+            Example Usage:  class="clearfix sticky header-sm transparent noborder"
+        -->
+        <div id="header" class="{% block sticky %}sticky{% endblock %} shadow-after-3 clearfix">
+
+            <!-- TOP NAV -->
+            <header id="topNav">
+                <div class="container">
+
+                    <!-- Mobile Menu Button -->
+                    <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- BUTTONS -->
+                    <ul class="pull-right nav nav-pills nav-second-main has-topBar">
+
+                        <!-- SEARCH -->
+                        <li class="search">
+                            <a href="javascript:;">
+                                <i class="fa fa-search"></i>
+                            </a>
+                            <div class="search-box">
+                                <form action="page-search-result-1.html" method="get">
+                                    <div class="input-group">
+                                        <input type="text" name="src" placeholder="Search" class="form-control">
+                                        <span class="input-group-btn">
+												<button class="btn btn-primary" type="submit">Search</button>
+											</span>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <!-- /SEARCH -->
+
+                        <!-- QUICK SHOP BASKET WRAPPER -->
+                        {% block basket %}
+                            <li class="basket">{{ include('topbasket/topbasket.html.twig') }}</li>
+                        {% endblock %}
+                        <!-- /QUICK SHOP BASKET WRAPPER -->
+
+                    </ul>
+                    <!-- /BUTTONS -->
+
+
+                    <!-- Logo -->
+                    <a class="logo pull-left" href="{{ path('index') }}">
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="">
+                    </a>
+
+                    <!--
+                        Top Nav
+
+                        AVAILABLE CLASSES:
+                        submenu-dark = dark sub menu
+                    -->
+                    <div class="navbar-collapse pull-left nav-main-collapse collapse submenu-dark">
+                        <nav class="nav-main">
+
+                            <!--
+                                NOTE
+
+                                For a regular link, remove "dropdown" class from LI tag and "dropdown-toggle" class from the href.
+                                Direct Link Example:
+
+                                <li>
+                                    <a href="#">HOME</a>
+                                </li>
+                            -->
+                            <ul id="topMain" class="nav nav-pills nav-main has-topBar">
+                                <li class="dropdown"><!-- ABSORBENTS -->
+                                    <a class="dropdown-toggle {% block absorbents %}{% endblock %}" href="{{ path('category', {'categoryName': "absorbents"}) }}">
+                                        ABSORBENTS
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" href="{{ path('sub_category', {'categoryLevel1': "absorbents", 'categoryName': "oil-absorbents"}) }}">
+                                                OIL ABSORBENTS
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "oil-absorbents", 'categoryName': 'oil-pads'}) }}">OIL PADS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "oil-absorbents", 'categoryName': 'oil-rolls'}) }}">OIL ROLLS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "oil-absorbents", 'categoryName': 'oil-socks'}) }}">OIL SOCKS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "oil-absorbents", 'categoryName': 'oil-booms'}) }}">OIL BOOMS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "oil-absorbents", 'categoryName': 'oil-cushions'}) }}">OIL CUSHIONS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "oil-absorbents", 'categoryName': 'oil-loose'}) }}">OIL LOOSE</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "oil-absorbents", 'categoryName': 'oil-pompoms'}) }}">OIL POMPOMS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "oil-absorbents", 'categoryName': 'oil-sweeps'}) }}">OIL SWEEPS</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" href="{{ path('sub_category', {'categoryLevel1': "absorbents", 'categoryName': "chemical-absorbents"}) }}">
+                                                CHEMICAL ABSORBENTS
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "chemical-absorbents", 'categoryName': 'chemical-pads'}) }}">CHEMICAL PADS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "chemical-absorbents", 'categoryName': 'chemical-rolls'}) }}">CHEMICAL ROLLS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "chemical-absorbents", 'categoryName': 'chemical-socks'}) }}">CHEMICAL SOCKS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "chemical-absorbents", 'categoryName': 'chemical-booms'}) }}">CHEMICAL BOOMS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "chemical-absorbents", 'categoryName': 'chemical-cushions'}) }}">CHEMICAL CUSHIONS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "chemical-absorbents", 'categoryName': 'chemical-loose'}) }}">CHEMICAL LOOSE</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" href="{{ path('sub_category', {'categoryLevel1': "absorbents", 'categoryName': "maintenance-absorbents"}) }}">
+                                                MAINTENANCE ABSORBENTS
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "maintenance-absorbents", 'categoryName': 'maintenance-pads'}) }}">MAINTENANCE PADS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "maintenance-absorbents", 'categoryName': 'maintenance-rolls'}) }}">MAINTENANCE ROLLS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "maintenance-absorbents", 'categoryName': 'maintenance-socks'}) }}">MAINTENANCE SOCKS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "maintenance-absorbents", 'categoryName': 'maintenance-booms'}) }}">MAINTENANCE BOOMS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "maintenance-absorbents", 'categoryName': 'maintenance-cushions'}) }}">MAINTENANCE CUSHIONS</a></li>
+                                                <li><a href="{{ path('sub_sub_category', {'categoryLevel1': "absorbents", 'categoryLevel2': "maintenance-absorbents", 'categoryName': 'maintenance-loose'}) }}">MAINTENANCE LOOSE</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown {% block spillKits %}{% endblock %}"><!-- SPILL KITS -->
+                                    <a href="{{ path('category', {'categoryName': "spill-kits"}) }}">
+                                        SPILL KITS
+                                    </a>
+                                </li>
+                                <li class="dropdown {% block temporaryBunding %}{% endblock %}"><!-- TEMPORARY BUNDING -->
+                                    <a href="{{ path('category', {'categoryName': "temporary-bunding"}) }}">
+                                        TEMPORARY BUNDING
+                                    </a>
+                                </li><li class="dropdown {% block training %}{% endblock %}"><!-- TRAINING -->
+                                    <a href="{{ path('category', {'categoryName': "training"}) }}">
+                                        TRAINING
+                                    </a>
+                                </li>
+                                <li class="dropdown"><!-- DRAIN PROTECTION -->
+                                    <a class="dropdown-toggle {% block drainProtection %}{% endblock %}" href="{{ path('category', {'categoryName': "drain-protection"}) }}">
+                                        DRAIN PROTECTION
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "drain-protection", 'categoryName': "flow-stopper-clay-mats"}) }}">
+                                                FLOW STOPPER CLAY MATS
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "drain-protection", 'categoryName': "flow-stopper-putty"}) }}">
+                                                FLOW STOPPER PUTTY
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "drain-protection", 'categoryName': "flow-stopper-neoprene-mats"}) }}">
+                                                FLOW STOPPER NEOPRENE MATS
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><!-- DRUM STORAGE -->
+                                    <a class="dropdown-toggle {% block drumStorage %}{% endblock %}" href="{{ path('category', {'categoryName': "drum-storage"}) }}">
+                                        DRUM STORAGE
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "drum-storage", 'categoryName': "sump-flooring"}) }}">
+                                                SUMP FLOORING
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "drum-storage", 'categoryName': "ibc-sump-pallet"}) }}">
+                                                IBC SUMP PALLET
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "drum-storage", 'categoryName': "sump-pallet"}) }}">
+                                                SUMP PALLET
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "drum-storage", 'categoryName': "trolley"}) }}">
+                                                TROLLEY
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "drum-storage", 'categoryName': "drum-tray"}) }}">
+                                                DRUM TRAY
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "drum-storage", 'categoryName': "over-drum"}) }}">
+                                                OVER DRUM
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "drum-storage", 'categoryName': "funnel"}) }}">
+                                                FUNNEL
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "drum-storage", 'categoryName': "can-and-lab-tray"}) }}">
+                                                CAN AND LAB TRAY
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><!-- SPILL KIT ACCESSORIES -->
+                                    <a class="dropdown-toggle {% block accessories %}{% endblock %}" href="{{ path('category', {'categoryName': "spill-kit-accessories"}) }}">
+                                        ACCESSORIES
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "spill-kit-accessories", 'categoryName': "ppe"}) }}">
+                                                PPE
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "spill-kit-accessories", 'categoryName': "signage"}) }}">
+                                                SIGNAGE
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('sub_category', {'categoryLevel1': "spill-kit-accessories", 'categoryName': "washing"}) }}">
+                                                WASHING
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown {% block tradeCounter %}{% endblock %}"><!-- HOME -->
+                                    <a href="{{ path('category', {'categoryName': "trade-counter"}) }}">
+                                        TRADE COUNTER
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </nav>
+                    </div>
+
+                </div>
+            </header>
+            <!-- /Top Nav -->
+
+        </div>
+
+        {% block body %}
+        {% endblock %}
+
+        <!-- FOOTER -->
+        <footer id="footer">
+            <div class="container">
+
+                <div class="row margin-top-60 margin-bottom-40 size-13">
+
+                    <!-- col #1 -->
+                    <div class="col-md-4 col-sm-4">
+
+                        <!-- Footer Logo -->
+                        <img class="footer-logo" src="{{ asset('assets/images/logo.png') }}" alt="" />
+
+                        <p>
+                            We aim to provide all your pollution control requirements for small to medium size oil, chemical and general maintenance spills in the work place.
+                        </p>
+
+                        <h2><a href="tel">+44 (0) 1924 442 701</a></h2>
+                        <h2><a href="tel">info@opec.co.uk</a></h2>
+
+                        <!-- Social Icons -->
+                        <div class="clearfix">
+
+                            <a href="#" class="social-icon social-icon-sm social-icon-border social-facebook pull-left" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                <i class="icon-facebook"></i>
+                                <i class="icon-facebook"></i>
+                            </a>
+
+                            <a href="#" class="social-icon social-icon-sm social-icon-border social-twitter pull-left" data-toggle="tooltip" data-placement="top" title="Twitter">
+                                <i class="icon-twitter"></i>
+                                <i class="icon-twitter"></i>
+                            </a>
+
+                            <a href="#" class="social-icon social-icon-sm social-icon-border social-gplus pull-left" data-toggle="tooltip" data-placement="top" title="Google plus">
+                                <i class="icon-gplus"></i>
+                                <i class="icon-gplus"></i>
+                            </a>
+
+                            <a href="#" class="social-icon social-icon-sm social-icon-border social-linkedin pull-left" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                                <i class="icon-linkedin"></i>
+                                <i class="icon-linkedin"></i>
+                            </a>
+
+                            <a href="#" class="social-icon social-icon-sm social-icon-border social-rss pull-left" data-toggle="tooltip" data-placement="top" title="Rss">
+                                <i class="icon-rss"></i>
+                                <i class="icon-rss"></i>
+                            </a>
+
+                        </div>
+                        <!-- /Social Icons -->
+
+                    </div>
+                    <!-- /col #1 -->
+
+                    <!-- col #2 -->
+                    <div class="col-md-8 col-sm-8">
+
+                        <div class="row">
+
+                            <div class="col-md-5 hidden-sm hidden-xs">
+                                <h4 class="letter-spacing-1">RECENT BLOG POSTS</h4>
+                                <ul class="list-unstyled footer-list half-paddings">
+                                    <li>
+                                        <a class="block" href="#">New CSS3 Transitions this Year</a>
+                                        <small>June 29, 2015</small>
+                                    </li>
+                                    <li>
+                                        <a class="block" href="#">Inteligent Transitions In UX Design</a>
+                                        <small>June 29, 2015</small>
+                                    </li>
+                                    <li>
+                                        <a class="block" href="#">Lorem Ipsum Dolor</a>
+                                        <small>June 29, 2015</small>
+                                    </li>
+                                    <li>
+                                        <a class="block" href="#">New CSS3 Transitions this Year</a>
+                                        <small>June 29, 2015</small>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-md-3 hidden-sm hidden-xs">
+                                <h4 class="letter-spacing-1">EXPLORE US</h4>
+                                <ul class="list-unstyled footer-list half-paddings noborder">
+                                    <li><a class="block" href="#"><i class="fa fa-angle-right"></i> About Us</a></li>
+                                    <li><a class="block" href="#"><i class="fa fa-angle-right"></i> PROJECTS</a></li>
+                                    <li><a class="block" href="#"><i class="fa fa-angle-right"></i> FAQ</a></li>
+                                    <li><a class="block" href="#"><i class="fa fa-angle-right"></i> OPEC</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h4 class="letter-spacing-1">SECURE PAYMENT</h4>
+                                <p>We have SSL which is the standard security technology for establishing secure communications between a web server and a browser.</p>
+                                <p>	<!-- see assets/images/cc/ for more icons -->
+                                    <img src="{{ asset('assets/frontend-client/images/cc/Visa.png') }}" alt="" />
+                                    <img src="{{ asset('assets/frontend-client/images/cc/Mastercard.png') }}" alt="" />
+                                    <img src="{{ asset('assets/frontend-client/images/cc/Maestro.png') }}" alt="" />
+                                    <img src="{{ asset('assets/frontend-client/images/cc/PayPal.png') }}" alt="" />
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /col #2 -->
+
+                </div>
+
+            </div>
+
+            <div class="copyright">
+                <div class="container">
+                    <ul class="pull-right nomargin list-inline mobile-block">
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                        <li>&bull;</li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+
+                    &copy; All Rights Reserved, Company LTD
+                </div>
+            </div>
+
+        </footer>
+        <!-- /FOOTER -->
+
+    </div>
+    <!-- /wrapper -->
+
+    <!-- SCROLL TO TOP -->
+    <a href="#" id="toTop"></a>
+
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="inner">
+            <span class="loader"></span>
+        </div>
+    </div><!-- /PRELOADER -->
+
+    {% block javascripts %}
+        <!-- JAVASCRIPT FILES -->
+        <script type="text/javascript">var plugin_path = "{{ asset('assets/frontend-client/plugins/') }}";</script>
+        <script type="text/javascript" src="{{ asset('assets/frontend-client/plugins/jquery/jquery-2.2.3.min.js') }}"></script>
+
+        <script type="text/javascript" src="{{ asset('assets/frontend-client/js/scripts.js') }}"></script>
+
+        <!-- REVOLUTION SLIDER -->
+        <script type="text/javascript" src="{{ asset('assets/frontend-client/plugins/slider.revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend-client/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend-client/js/view/demo.revolution_slider.js') }}"></script>
+
+        <!-- PAGE LEVEL SCRIPTS -->
+        <script type="text/javascript" src="{{ asset('assets/frontend-client/js/view/demo.shop.js') }}"></script>
+
+        <script>
+            $(window).scroll(function() {
+
+                if ($(this).scrollTop()>45)
+                {
+                    $("#top-bar-scroll").addClass( "top-bar-scroll" );
+                }
+                else
+                {
+                    $("#top-bar-scroll").removeClass( "top-bar-scroll" );
+                }
+            });
+        </script>
+
+        {% for msg in app.session.flashbag.get('success') %}
+            <script type="text/javascript">
+                _toastr("{{ msg }}","top-full-width","success",false);
+            </script>
+        {% endfor %}
+        {% for msg in app.session.flashbag.get('info') %}
+            <script type="text/javascript">
+                _toastr("{{ msg }}","top-full-width","info",false);
+            </script>
+        {% endfor %}
+        {% for msg in app.session.flashbag.get('danger') %}
+            <script type="text/javascript">
+                _toastr("{{ msg }}","top-full-width","primary",false);
+            </script>
+        {% endfor %}
+        {% for msg in app.session.flashbag.get('warning') %}
+        <script type="text/javascript">
+            _toastr("{{ msg }}","top-full-width","warning",false);
+        </script>
+        {% endfor %}
+        {% for msg in app.session.flashbag.get('notification') %}
+        <script type="text/javascript">
+            _toastr("{{ msg }}","top-full-width","notification",false);
+        </script>
+        {% endfor %}
+
+    {% endblock %}
+</body>
+</html>
